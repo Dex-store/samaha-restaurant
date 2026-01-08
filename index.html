@@ -90,7 +90,7 @@
       background:#fff; color:#111; font-weight:900;
     }
 
-    /* Hero (logo as cover too) */
+    /* Hero */
     .hero{
       border-bottom:1px solid var(--line);
       padding: 18px 0 18px;
@@ -328,7 +328,7 @@
     footer{
       background:#141414;
       color:#fff;
-      padding:22px 0 90px; /* leave space for floating buttons */
+      padding:22px 0 90px;
       margin-top: 10px;
     }
     .footergrid{
@@ -357,7 +357,6 @@
       justify-content:center;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       .menu-grid{grid-template-columns: repeat(2, 1fr)}
@@ -378,8 +377,8 @@
 <header>
   <div class="container nav">
     <div class="brand">
-      <!-- ضع ملف الشعار بنفس اسم: logo.png بجانب index.html -->
-      <img src="logo.png" alt="Samaha Logo" />
+      <!-- IMPORTANT: upload your logo as: logo.png.jpg (same folder as index.html) -->
+      <img src="logo.png.jpg" alt="Samaha Logo" />
       <div>
         <h1 id="brandName">مطعم سماحة السياحي</h1>
         <div class="tag" id="brandTag">بربر • نهر النيل • السودان</div>
@@ -402,16 +401,14 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div class="cover">
         <div class="cover-top">
-          <!-- نفس الشعار كصورة غلاف أيضاً -->
-          <img src="logo.png" alt="Samaha Cover" />
+          <img src="logo.png.jpg" alt="Samaha Cover" />
           <div>
             <div class="badge" id="halalBadge">✅ حلال 100%</div>
-            <div class="muted small" id="estLine">تأسس 2024 • الإدارة: عبدالعظيم الأحمدي</div>
+            <div class="muted small" id="estLine">تأسس 2024 • الإدارة: عبدالعظيم الاحمدي</div>
           </div>
         </div>
 
@@ -486,7 +483,6 @@
     </div>
   </section>
 
-  <!-- MENU -->
   <section id="menu">
     <div class="container">
       <div class="section-head">
@@ -502,7 +498,6 @@
     </div>
   </section>
 
-  <!-- ORDER -->
   <section id="order">
     <div class="container">
       <div class="section-head">
@@ -589,7 +584,6 @@
     </div>
   </section>
 
-  <!-- RESERVE -->
   <section id="reserve">
     <div class="container">
       <div class="section-head">
@@ -657,7 +651,6 @@
     </div>
   </section>
 
-  <!-- LOCATION -->
   <section id="location">
     <div class="container">
       <div class="section-head">
@@ -707,7 +700,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <div class="section-head">
@@ -724,17 +716,16 @@
         <div class="hr"></div>
         <div class="hint">
           <b data-i18n="mission_title">الرسالة:</b>
-          <span data-i18n="mission_text">هدفنا تقديم افضل جودة للمواطن السوداني الأصيل.</span><br/>
+          <span data-i18n="mission_text">هدفنا تقديم افضل جودة للمواطن السوداني الأصيل</span><br/>
           <b data-i18n="management_title">الإدارة:</b>
-          <span data-i18n="management_text">عبدالعظيم الأحمدي.</span><br/>
+          <span data-i18n="management_text">عبدالعظيم الاحمدي</span><br/>
           <b data-i18n="halal_title">حلال:</b>
-          <span data-i18n="halal_text">جميع الأطعمة حلال 100%.</span>
+          <span data-i18n="halal_text">جميع الأطعمة حلال 100%</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
   <section id="reviews">
     <div class="container">
       <div class="section-head">
@@ -786,7 +777,6 @@
   </div>
 </footer>
 
-<!-- Fixed WhatsApp + Call buttons (as you requested) -->
 <div class="floatbar">
   <a class="btn btn-red" id="floatWhats" href="#" target="_blank" rel="noopener">💬 <span id="floatWhatsTxt">واتساب</span></a>
   <a class="btn btn-yellow" id="floatCall" href="tel:+249114050969">📞 <span id="floatCallTxt">اتصال</span></a>
@@ -794,7 +784,7 @@
 
 <script>
 /* =========================
-   SETTINGS (edit anytime)
+   SETTINGS
    ========================= */
 const SETTINGS = {
   name_ar: "مطعم سماحة السياحي",
@@ -806,9 +796,9 @@ const SETTINGS = {
   hours_long_ar: "جميع أيام الأسبوع من 9 صباحًا حتى 9 مساءً",
   hours_short_en: "9:00 AM – 9:00 PM",
   hours_long_en: "Every day from 9:00 AM to 9:00 PM",
-  delivery_ar: "داخل محلية بربر",
+  delivery_value_ar: "داخل محلية بربر",
   delivery_long_ar: "داخل محلية بربر بولاية نهر النيل السودان",
-  delivery_en: "Within Berber locality",
+  delivery_value_en: "Within Berber locality",
   delivery_long_en: "Delivery within Berber locality, River Nile State, Sudan",
   eta_ar: "30–40 دقيقة",
   eta_en: "30–40 minutes",
@@ -827,18 +817,16 @@ function waLink(text){
 }
 
 /* =========================
-   MENU DATA (global style images)
-   - using Unsplash with queries (works instantly)
+   IMAGES FIX (stable source)
+   Using loremflickr (more reliable than source.unsplash in some networks)
    ========================= */
 function img(q, sig){
-  const base = "https://images.unsplash.com/";
-  // Using fixed known good photos for stability would require multiple IDs.
-  // Here we use query-based approach via source.unsplash.com fallback-like style:
-  // We'll use "https://source.unsplash.com/..." which is stable for direct random images.
-  // But GitHub CSP sometimes: it works fine. We'll use source.unsplash.com for simplicity.
-  return "https://source.unsplash.com/800x600/?" + encodeURIComponent(q) + "&sig=" + sig;
+  return "https://loremflickr.com/800/600/" + encodeURIComponent("food " + q) + "?lock=" + sig;
 }
 
+/* =========================
+   MENU DATA
+   ========================= */
 const MENU = [
   {
     key:"juices",
@@ -855,7 +843,7 @@ const MENU = [
       {ar:"تفاح", en:"Apple Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple juice", 8)},
       {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple milkshake", 9)},
       {ar:"مشكل", en:"Mixed Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mixed juice", 10)},
-      {ar:"منقة بالاوريو", en:"Mango Oreo", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango oreo milkshake", 11)},
+      {ar:"منقة بالاوريو", en:"Mango Oreo", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango oreo", 11)},
       {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("special smoothie", 12)}
     ]
   },
@@ -899,7 +887,7 @@ const MENU = [
       {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"8000 ج", price_en:"8000 SDG", img: img("grilled skewers", 70)},
       {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"35,000 ج", price_en:"35,000 SDG", img: img("grilled chicken", 71)},
       {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"17,500 ج", price_en:"17,500 SDG", img: img("half grilled chicken", 72)},
-      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img: img("crispy fries", 73)},
+      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img: img("fries", 73)},
       {ar:"بروست 4 قطع", en:"Broast 4 pcs", price_ar:"24,000 ج", price_en:"24,000 SDG", img: img("fried chicken", 74)},
       {ar:"بروست 8 قطع", en:"Broast 8 pcs", price_ar:"48,000 ج", price_en:"48,000 SDG", img: img("fried chicken bucket", 75)},
       {ar:"بروست 12 قطعة", en:"Broast 12 pcs", price_ar:"72,000 ج", price_en:"72,000 SDG", img: img("fried chicken platter", 76)},
@@ -915,13 +903,13 @@ const MENU = [
       {ar:"بيرقر عادي (فطيرة/عيش)", en:"Burger Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("burger", 91)},
       {ar:"بيرقر جامبو (فطيرة/عيش)", en:"Burger Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("double burger", 92)},
       {ar:"هوت دوغ عادي (فطيرة/عيش)", en:"Hot Dog Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("hot dog", 93)},
-      {ar:"هوت دوغ جامبو (فطيرة/عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("hotdog jumbo", 94)},
+      {ar:"هوت دوغ جامبو (فطيرة/عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("hot dog jumbo", 94)},
       {ar:"كرسبي (فطيرة/عيش)", en:"Crispy (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("crispy chicken sandwich", 95)},
       {ar:"شاورما (فطيرة/عيش)", en:"Shawarma (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("shawarma wrap", 96)},
       {ar:"اقاشي عادي (فطيرة/عيش)", en:"Agashi Regular (Pita/Bread)", price_ar:"4000 ج", price_en:"4000 SDG", img: img("kebab sandwich", 97)},
       {ar:"اقاشي جامبو (فطيرة/عيش)", en:"Agashi Jumbo (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("kebab wrap", 98)},
       {ar:"طعمية (فطيرة/عيش)", en:"Falafel (Pita/Bread)", price_ar:"1500 ج", price_en:"1500 SDG", img: img("falafel sandwich", 99)},
-      {ar:"شيبس (فطيرة/عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("fries sandwich", 100)},
+      {ar:"شيبس (فطيرة/عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("fries wrap", 100)},
       {ar:"طعمية & شيبس (فطيرة/عيش)", en:"Falafel & Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("falafel fries wrap", 101)}
     ]
   },
@@ -1028,7 +1016,6 @@ const I18N = {
     contact:"تواصل",
     add:"أضف",
     remove:"حذف",
-    item:"صنف",
     qty:"العدد",
     cart_empty:"السلة فارغة — ابدأ بإضافة أصناف من المنيو."
   },
@@ -1081,7 +1068,6 @@ const I18N = {
     contact:"Contact",
     add:"Add",
     remove:"Remove",
-    item:"Item",
     qty:"Qty",
     cart_empty:"Cart is empty — add items from the menu."
   }
@@ -1092,7 +1078,7 @@ function t(k){ return (I18N[LANG] && I18N[LANG][k]) ? I18N[LANG][k] : k; }
 /* =========================
    Cart
    ========================= */
-const CART = []; // {name, price, qty}
+const CART = [];
 
 function addToCart(menuItem){
   const name = (LANG==="ar") ? menuItem.ar : menuItem.en;
@@ -1128,10 +1114,8 @@ function cartCount(){
 }
 
 function renderCart(){
-  const c1 = document.getElementById("cartCount");
-  const c2 = document.getElementById("cartCount2");
-  c1.textContent = cartCount();
-  c2.textContent = cartCount();
+  document.getElementById("cartCount").textContent = cartCount();
+  document.getElementById("cartCount2").textContent = cartCount();
 
   const list = document.getElementById("cartList");
   list.innerHTML = "";
@@ -1159,10 +1143,10 @@ function renderCart(){
         <button type="button" class="remove">${t("remove")}</button>
       </div>
     `;
-    const [btnDec, , btnInc, btnRemove] = row.querySelectorAll("button");
-    btnDec.onclick = ()=>decQty(idx);
-    btnInc.onclick = ()=>incQty(idx);
-    btnRemove.onclick = ()=>removeItem(idx);
+    const buttons = row.querySelectorAll("button");
+    buttons[0].onclick = ()=>decQty(idx);
+    buttons[1].onclick = ()=>incQty(idx);
+    buttons[2].onclick = ()=>removeItem(idx);
     list.appendChild(row);
   });
 }
@@ -1222,41 +1206,34 @@ function applyLang(){
   document.documentElement.lang = LANG;
   document.documentElement.dir = (LANG==="ar") ? "rtl" : "ltr";
 
-  // static i18n elements
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
     el.textContent = t(key);
   });
 
-  // names
   document.getElementById("brandName").textContent = (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
   document.getElementById("heroName").textContent  = (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
   document.getElementById("footerName").textContent= (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
 
-  // hours
   document.getElementById("hoursText").textContent = (LANG==="ar") ? SETTINGS.hours_short_ar : SETTINGS.hours_short_en;
   document.getElementById("hoursLong").textContent = (LANG==="ar") ? SETTINGS.hours_long_ar : SETTINGS.hours_long_en;
 
-  // badge + established line
   document.getElementById("halalBadge").textContent = (LANG==="ar") ? "✅ حلال 100%" : "✅ 100% Halal";
   document.getElementById("estLine").textContent = (LANG==="ar")
     ? "تأسس 2024 • الإدارة: عبدالعظيم الاحمدي"
     : "Founded 2024 • Management: Abdulazim Al-Ahmadi";
 
-  // floating labels
   document.getElementById("floatWhatsTxt").textContent = (LANG==="ar") ? "واتساب" : "WhatsApp";
   document.getElementById("floatCallTxt").textContent = (LANG==="ar") ? "اتصال" : "Call";
 
-  // lang button
   document.getElementById("langBtn").textContent = (LANG==="ar") ? "EN" : "AR";
 
-  // rerender menu & cart (names language)
   renderMenu();
   renderCart();
 }
 
 /* =========================
-   WhatsApp submission (Orders + Reserve)
+   WhatsApp submission
    ========================= */
 function openWhatsApp(message){
   window.open(waLink(message), "_blank", "noopener");
@@ -1270,8 +1247,8 @@ function buildCartLines(){
 }
 
 document.addEventListener("DOMContentLoaded", ()=>{
-  // links
   const waBase = "https://wa.me/" + digitsOnly(SETTINGS.whatsapp);
+
   document.getElementById("heroWhats").href = waBase;
   document.getElementById("footerWhats").href = waBase;
   document.getElementById("floatWhats").href = waBase;
@@ -1285,21 +1262,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // clear cart
   document.getElementById("clearCartBtn").addEventListener("click", clearCart);
 
-  // initial render
   renderMenu();
   renderCart();
   applyLang();
 
-  // lang toggle
   document.getElementById("langBtn").addEventListener("click", ()=>{
     LANG = (LANG==="ar") ? "en" : "ar";
     applyLang();
   });
 
-  // order form
   document.getElementById("orderForm").addEventListener("submit", (e)=>{
     e.preventDefault();
 
@@ -1340,7 +1313,6 @@ ${LANG==="ar" ? "سياسة الإلغاء: خلال أول 10 دقائق فقط
     openWhatsApp(msg);
   });
 
-  // reserve form
   document.getElementById("reserveForm").addEventListener("submit", (e)=>{
     e.preventDefault();
 
@@ -1376,4 +1348,4 @@ ${LANG==="ar" ? "ملاحظة: الرجاء إرسال رقم العملية و�
 });
 </script>
 </body>
-                                                               </html>
+  </html>
