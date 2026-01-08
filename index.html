@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>مطعم سماحة السياحي | Samaha Restaurant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="مطعم سماحة السياحي - أفضل مطعم في محلية بربر">
+<meta property="og:title" content="مطعم سماحة السياحي">
+<meta property="og:description" content="وجبات سمحة سماحة يبقى مطعم سماحة">
+
+<style>
+body{
+  margin:0;
+  font-family:Tahoma,Arial;
+  background:#fff;
+  color:#222;
+}
+header{
+  background:#8b5a2b;
+  color:#fff;
+  padding:15px;
+}
+header h1{
+  margin:0;
+  font-size:22px;
+}
+button{
+  cursor:pointer;
+}
+.hero{
+  background:linear-gradient(to left,#b71c1c,#fbc02d);
+  color:#fff;
+  text-align:center;
+  padding:60px 20px;
+}
+.section{
+  padding:40px 20px;
+  text-align:center;
+}
+.wood{
+  background:#f5efe6;
+}
+.btn{
+  display:inline-block;
+  padding:12px 25px;
+  margin:8px;
+  border-radius:6px;
+  text-decoration:none;
+  color:#fff;
+}
+.red{background:#c62828;}
+.yellow{background:#f9a825;color:#000;}
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.item{
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:10px;
+}
+.item img{
+  width:100%;
+  border-radius:10px;
+}
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+}
+iframe{
+  width:100%;
+  height:300px;
+  border:0;
+}
+footer{
+  background:#222;
+  color:#fff;
+  padding:20px;
+  font-size:14px;
+}
+.lang{
+  float:left;
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:6px 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <button class="lang" onclick="toggleLang()">EN</button>
+  <h1 id="title">🍽 مطعم سماحة السياحي</h1>
+</header>
+
+<section class="hero">
+  <h2 id="slogan">وجبات سمحة سماحة يبقى مطعم سماحة</h2>
+  <p id="desc">أفضل مطعم في محلية بربر – جودة عالية وطعم أصيل</p>
+  <a class="btn red" href="https://wa.me/249906183477">اطلب عبر واتساب</a>
+  <a class="btn yellow" href="tel:+249114050969">اتصل بنا</a>
+</section>
+
+<section class="section">
+  <h2 id="menuTitle">المنيو</h2>
+  <div class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1604908177522-402b1d84b3c7">
+      <h3>شاورما</h3><p>8000 جنيه</p>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1604908812433">
+      <h3>طعمية</h3><p>1500 جنيه</p>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5">
+      <h3>بطاطس</h3><p>2500 جنيه</p>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1625944230945">
+      <h3>اقاشي</h3><p>4000 جنيه</p>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1608198093002">
+      <h3>فطائر</h3><p>7000 جنيه</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wood">
+  <h2 id="orderTitle">طلب ودفع إلكتروني</h2>
+  <input placeholder="اسمك">
+  <input placeholder="رقم الهاتف">
+  <input placeholder="الطلب">
+  <input placeholder="رقم العملية">
+  <input type="file" accept="image/*">
+  <a class="btn red" href="https://wa.me/249906183477">إرسال الطلب</a>
+</section>
+
+<section class="section">
+  <h2 id="reserveTitle">حجز طاولة</h2>
+  <p id="reserveText">الحد الأقصى 8 أشخاص – الحجز عبر واتساب</p>
+  <a class="btn yellow" href="https://wa.me/249906183477">احجز الآن</a>
+</section>
+
+<section class="section wood">
+  <h2 id="locationTitle">الموقع</h2>
+  <p>بربر - الدكة - الشارع الرئيسي - شمال كلية الشريعة والقانون</p>
+  <iframe src="https://maps.google.com/maps?q=Berber%20Sudan&z=15&output=embed"></iframe>
+</section>
+
+<section class="section">
+  <h2 id="aboutTitle">عن المطعم</h2>
+  <p id="aboutText">
+    مطعم سماحة السياحي المطعم الأول والأفضل على مستوى محلية بربر،
+    نقدم أفضل الأطعمة ذات الجودة العالية. جميع الأطعمة حلال 100%.
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 مطعم سماحة السياحي</p>
+  <p>يمكن إلغاء الطلب خلال أول 10 دقائق فقط</p>
+</footer>
+
+<script>
+let ar=true;
+function toggleLang(){
+  ar=!ar;
+  document.documentElement.lang=ar?"ar":"en";
+  document.documentElement.dir=ar?"rtl":"ltr";
+  document.querySelector(".lang").innerText=ar?"EN":"AR";
+
+  document.getElementById("title").innerText=ar?"🍽 مطعم سماحة السياحي":"🍽 Samaha Restaurant";
+  document.getElementById("slogan").innerText=ar?"وجبات سمحة سماحة يبقى مطعم سماحة":"Delicious Meals, Samaha Always the Choice";
+  document.getElementById("desc").innerText=ar?"أفضل مطعم في محلية بربر":"Best restaurant in Berber locality";
+  document.getElementById("menuTitle").innerText=ar?"المنيو":"Menu";
+  document.getElementById("orderTitle").innerText=ar?"طلب ودفع إلكتروني":"Order & Payment";
+  document.getElementById("reserveTitle").innerText=ar?"حجز طاولة":"Table Reservation";
+  document.getElementById("reserveText").innerText=ar?"الحد الأقصى 8 أشخاص – الحجز عبر واتساب":"Max 8 people – WhatsApp reservation";
+  document.getElementById("locationTitle").innerText=ar?"الموقع":"Location";
+  document.getElementById("aboutTitle").innerText=ar?"عن المطعم":"About Us";
+  document.getElementById("aboutText").innerText=ar?
+  "مطعم سماحة السياحي المطعم الأول والأفضل على مستوى محلية بربر":
+  "Samaha Restaurant is the best restaurant in Berber locality";
+}
+</script>
+
+</body>
+      </html>
