@@ -1,193 +1,1379 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>مطعم سماحة السياحي | Samaha Restaurant</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مطعم سماحة السياحي | samaha-restaurant</title>
+  <meta name="description" content="مطعم سماحة السياحي - بربر - منيو كامل - طلبات واتساب - حجز طاولات - دفع بنكك" />
 
-<meta name="description" content="مطعم سماحة السياحي - أفضل مطعم في محلية بربر">
-<meta property="og:title" content="مطعم سماحة السياحي">
-<meta property="og:description" content="وجبات سمحة سماحة يبقى مطعم سماحة">
+  <!-- Open Graph -->
+  <meta property="og:title" content="مطعم سماحة السياحي" />
+  <meta property="og:description" content="وجبات سمحة سماحة يبقى مطعم سماحة" />
+  <meta property="og:type" content="website" />
 
-<style>
-body{
-  margin:0;
-  font-family:Tahoma,Arial;
-  background:#fff;
-  color:#222;
-}
-header{
-  background:#8b5a2b;
-  color:#fff;
-  padding:15px;
-}
-header h1{
-  margin:0;
-  font-size:22px;
-}
-button{
-  cursor:pointer;
-}
-.hero{
-  background:linear-gradient(to left,#b71c1c,#fbc02d);
-  color:#fff;
-  text-align:center;
-  padding:60px 20px;
-}
-.section{
-  padding:40px 20px;
-  text-align:center;
-}
-.wood{
-  background:#f5efe6;
-}
-.btn{
-  display:inline-block;
-  padding:12px 25px;
-  margin:8px;
-  border-radius:6px;
-  text-decoration:none;
-  color:#fff;
-}
-.red{background:#c62828;}
-.yellow{background:#f9a825;color:#000;}
-.menu{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-.item{
-  border:1px solid #ddd;
-  border-radius:10px;
-  padding:10px;
-}
-.item img{
-  width:100%;
-  border-radius:10px;
-}
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin:6px 0;
-}
-iframe{
-  width:100%;
-  height:300px;
-  border:0;
-}
-footer{
-  background:#222;
-  color:#fff;
-  padding:20px;
-  font-size:14px;
-}
-.lang{
-  float:left;
-  background:#fff;
-  color:#000;
-  border:none;
-  padding:6px 12px;
-}
-</style>
+  <style>
+    :root{
+      --wood:#8b5a2b;
+      --wood2:#6f4522;
+      --red:#c62828;
+      --yellow:#f9a825;
+      --bg:#ffffff;
+      --text:#141414;
+      --muted:#6b6b6b;
+      --line:#e9e2da;
+      --card:#ffffff;
+      --shadow: 0 12px 30px rgba(0,0,0,.10);
+      --radius:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Tahoma, Arial, system-ui, -apple-system, "Segoe UI";
+      background: radial-gradient(1000px 600px at 80% -10%, rgba(249,168,37,.20), transparent 60%),
+                  radial-gradient(900px 520px at 10% 0%, rgba(198,40,40,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 16px}
+    .muted{color:var(--muted)}
+    .small{font-size:.92rem}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border:1px solid var(--line);
+      border-radius:999px; background:#fff;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(90deg, var(--wood), var(--wood2));
+      color:#fff;
+      box-shadow: 0 10px 28px rgba(0,0,0,.14);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 0; gap:10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 240px;
+    }
+    .brand img{
+      width:46px; height:46px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.30);
+      background: rgba(255,255,255,.10);
+      object-fit:cover;
+    }
+    .brand h1{margin:0; font-size:18px; line-height:1.15}
+    .brand .tag{font-size:12px; opacity:.95}
+    .navlinks{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .navlinks a{
+      color:#fff; opacity:.95;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      font-weight:800;
+    }
+    .navlinks a:hover{background: rgba(255,255,255,.14)}
+    .actions{
+      display:flex; align-items:center; gap:8px;
+    }
+    .langbtn{
+      border:none; cursor:pointer;
+      padding:10px 12px; border-radius:12px;
+      background:#fff; color:#111; font-weight:900;
+    }
+
+    /* Hero (logo as cover too) */
+    .hero{
+      border-bottom:1px solid var(--line);
+      padding: 18px 0 18px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:12px;
+      align-items:stretch;
+      padding: 10px 0 22px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+    .cover{
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:
+        radial-gradient(800px 400px at 70% 10%, rgba(249,168,37,.25), transparent 60%),
+        radial-gradient(700px 380px at 20% 0%, rgba(198,40,40,.18), transparent 55%),
+        linear-gradient(180deg, #fff, #fffaf2);
+      display:flex; flex-direction:column; gap:12px;
+      padding:16px;
+    }
+    .cover-top{
+      display:flex; align-items:center; gap:12px;
+    }
+    .cover-top img{
+      width:88px; height:88px; border-radius:18px;
+      border:1px solid var(--line);
+      background:#fff;
+      object-fit:cover;
+      box-shadow: 0 10px 22px rgba(0,0,0,.12);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      background: rgba(198,40,40,.10);
+      border:1px solid rgba(198,40,40,.18);
+      color:#7f1414;
+      font-weight:900;
+      width: fit-content;
+    }
+    .hero h2{margin:10px 0 8px; font-size:28px; line-height:1.25}
+    .accent{color:var(--red); font-weight:900}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:900;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn-red{background:var(--red); color:#fff}
+    .btn-yellow{background:var(--yellow); color:#111}
+    .btn-ghost{background:#fff; color:#111; border-color:var(--line)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .hr{height:1px; background:var(--line); margin:12px 0}
+
+    section{padding: 22px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px; margin-bottom:12px;
+    }
+    .section-head h3{margin:0; font-size:22px}
+    .section-head p{margin:0}
+
+    /* Menu */
+    .tabs{
+      display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .tab.active{
+      background: rgba(249,168,37,.22);
+      border-color: rgba(249,168,37,.55);
+    }
+    .menu-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      display:flex;
+      flex-direction:column;
+    }
+    .imgwrap{width:100%; aspect-ratio: 4/3; background:#f4f1ed}
+    .imgwrap img{width:100%; height:100%; object-fit:cover; display:block}
+    .info{padding:12px; display:flex; flex-direction:column; gap:8px}
+    .info h4{margin:0; font-size:16px}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .price{
+      font-weight:900;
+      padding:6px 10px; border-radius:999px;
+      background: rgba(198,40,40,.08);
+      border:1px solid rgba(198,40,40,.16);
+      white-space:nowrap;
+    }
+    .add{
+      border:none; cursor:pointer;
+      font-weight:900;
+      padding:8px 10px;
+      border-radius:12px;
+      background: rgba(111,69,34,.10);
+      border:1px solid rgba(111,69,34,.22);
+      white-space:nowrap;
+    }
+
+    /* Cart + forms */
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .form{display:grid; gap:10px}
+    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .grid3{display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px}
+    label{display:block; text-align:start; font-weight:900; margin-bottom:6px}
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      outline:none;
+      background:#fff;
+      font-size:15px;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .hint{
+      background:#fffaf0;
+      border:1px solid #f1d28a;
+      padding:10px 12px;
+      border-radius:14px;
+      font-size: 13.5px;
+      text-align:start;
+      line-height:1.7;
+    }
+    .cartlist{
+      display:grid; gap:8px;
+      margin-top:10px;
+    }
+    .cartitem{
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+    .qtybtn{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:6px 10px;
+      cursor:pointer;
+      font-weight:900;
+      min-width:40px;
+    }
+    .remove{
+      border:1px solid rgba(198,40,40,.25);
+      background: rgba(198,40,40,.08);
+      color:#7f1414;
+      border-radius:12px;
+      padding:6px 10px;
+      cursor:pointer;
+      font-weight:900;
+    }
+
+    /* Location + socials */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    iframe{
+      width:100%;
+      height:320px;
+      border:0;
+      border-radius: var(--radius);
+    }
+    .socials{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:10px;
+    }
+    .socials a{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      font-weight:900;
+    }
+
+    /* Reviews */
+    .reviews{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .quote{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      background:#fff;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      text-align:start;
+      line-height:1.8;
+    }
+    .stars{color:#b37a00; font-weight:900}
+
+    /* Footer */
+    footer{
+      background:#141414;
+      color:#fff;
+      padding:22px 0 90px; /* leave space for floating buttons */
+      margin-top: 10px;
+    }
+    .footergrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
+      align-items:start;
+    }
+    .footergrid a{color:#fff; text-decoration:underline}
+    .legal{font-size:13px; opacity:.92; line-height:1.8}
+
+    /* Floating fixed buttons */
+    .floatbar{
+      position:fixed;
+      bottom: 12px;
+      inset-inline: 12px;
+      z-index:100;
+      display:flex;
+      gap:10px;
+      pointer-events:none;
+    }
+    .floatbar a{
+      pointer-events:auto;
+      flex:1;
+      box-shadow: 0 14px 28px rgba(0,0,0,.18);
+      justify-content:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns: repeat(2, 1fr)}
+      .two-col{grid-template-columns:1fr}
+      .reviews{grid-template-columns:1fr}
+      .footergrid{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+    @media (max-width: 520px){
+      .grid2, .grid3{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+  </style>
 </head>
 
 <body>
-
 <header>
-  <button class="lang" onclick="toggleLang()">EN</button>
-  <h1 id="title">🍽 مطعم سماحة السياحي</h1>
-</header>
+  <div class="container nav">
+    <div class="brand">
+      <!-- ضع ملف الشعار بنفس اسم: logo.png بجانب index.html -->
+      <img src="logo.png" alt="Samaha Logo" />
+      <div>
+        <h1 id="brandName">مطعم سماحة السياحي</h1>
+        <div class="tag" id="brandTag">بربر • نهر النيل • السودان</div>
+      </div>
+    </div>
 
-<section class="hero">
-  <h2 id="slogan">وجبات سمحة سماحة يبقى مطعم سماحة</h2>
-  <p id="desc">أفضل مطعم في محلية بربر – جودة عالية وطعم أصيل</p>
-  <a class="btn red" href="https://wa.me/249906183477">اطلب عبر واتساب</a>
-  <a class="btn yellow" href="tel:+249114050969">اتصل بنا</a>
-</section>
+    <nav class="navlinks" aria-label="Navigation">
+      <a href="#menu" data-i18n="nav_menu">المنيو</a>
+      <a href="#order" data-i18n="nav_order">اطلب</a>
+      <a href="#reserve" data-i18n="nav_reserve">حجز</a>
+      <a href="#location" data-i18n="nav_location">الموقع</a>
+      <a href="#about" data-i18n="nav_about">عنّا</a>
+    </nav>
 
-<section class="section">
-  <h2 id="menuTitle">المنيو</h2>
-  <div class="menu">
-    <div class="item">
-      <img src="https://images.unsplash.com/photo-1604908177522-402b1d84b3c7">
-      <h3>شاورما</h3><p>8000 جنيه</p>
-    </div>
-    <div class="item">
-      <img src="https://images.unsplash.com/photo-1604908812433">
-      <h3>طعمية</h3><p>1500 جنيه</p>
-    </div>
-    <div class="item">
-      <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5">
-      <h3>بطاطس</h3><p>2500 جنيه</p>
-    </div>
-    <div class="item">
-      <img src="https://images.unsplash.com/photo-1625944230945">
-      <h3>اقاشي</h3><p>4000 جنيه</p>
-    </div>
-    <div class="item">
-      <img src="https://images.unsplash.com/photo-1608198093002">
-      <h3>فطائر</h3><p>7000 جنيه</p>
+    <div class="actions">
+      <button class="langbtn" id="langBtn" type="button">EN</button>
     </div>
   </div>
-</section>
+</header>
 
-<section class="section wood">
-  <h2 id="orderTitle">طلب ودفع إلكتروني</h2>
-  <input placeholder="اسمك">
-  <input placeholder="رقم الهاتف">
-  <input placeholder="الطلب">
-  <input placeholder="رقم العملية">
-  <input type="file" accept="image/*">
-  <a class="btn red" href="https://wa.me/249906183477">إرسال الطلب</a>
-</section>
+<main>
 
-<section class="section">
-  <h2 id="reserveTitle">حجز طاولة</h2>
-  <p id="reserveText">الحد الأقصى 8 أشخاص – الحجز عبر واتساب</p>
-  <a class="btn yellow" href="https://wa.me/249906183477">احجز الآن</a>
-</section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="cover">
+        <div class="cover-top">
+          <!-- نفس الشعار كصورة غلاف أيضاً -->
+          <img src="logo.png" alt="Samaha Cover" />
+          <div>
+            <div class="badge" id="halalBadge">✅ حلال 100%</div>
+            <div class="muted small" id="estLine">تأسس 2024 • الإدارة: عبدالعظيم الأحمدي</div>
+          </div>
+        </div>
 
-<section class="section wood">
-  <h2 id="locationTitle">الموقع</h2>
-  <p>بربر - الدكة - الشارع الرئيسي - شمال كلية الشريعة والقانون</p>
-  <iframe src="https://maps.google.com/maps?q=Berber%20Sudan&z=15&output=embed"></iframe>
-</section>
+        <h2>
+          <span data-i18n="hero_welcome">أهلاً بكم في</span>
+          <span class="accent" id="heroName">مطعم سماحة السياحي</span>
+        </h2>
+        <div class="muted" data-i18n="hero_slogan">وجبات سمحة سماحة يبقى مطعم سماحة</div>
 
-<section class="section">
-  <h2 id="aboutTitle">عن المطعم</h2>
-  <p id="aboutText">
-    مطعم سماحة السياحي المطعم الأول والأفضل على مستوى محلية بربر،
-    نقدم أفضل الأطعمة ذات الجودة العالية. جميع الأطعمة حلال 100%.
-  </p>
-</section>
+        <div class="btnrow">
+          <a class="btn btn-red" id="heroWhats" href="#" target="_blank" rel="noopener">
+            💬 <span data-i18n="cta_whatsapp">اطلب عبر واتساب</span>
+          </a>
+          <a class="btn btn-yellow" id="heroCall" href="#">
+            📞 <span data-i18n="cta_call">اتصل بنا</span>
+          </a>
+          <a class="btn btn-ghost" href="#menu">
+            🍽️ <span data-i18n="cta_menu">شوف المنيو</span>
+          </a>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px">
+          <span class="pill">🕘 <b data-i18n="hours">ساعات العمل</b>: <span id="hoursText">9:00 ص – 9:00 م</span></span>
+          <span class="pill">🚚 <b data-i18n="delivery">التوصيل</b>: <span data-i18n="delivery_value">داخل محلية بربر</span></span>
+          <span class="pill">⏱️ <b data-i18n="eta">المدة</b>: <span data-i18n="eta_value">30–40 دقيقة</span></span>
+        </div>
+
+        <div class="hr"></div>
+        <div class="hint">
+          <b data-i18n="payment_title">الدفع:</b>
+          <span data-i18n="payment_text">بنكك</span><br/>
+          <b data-i18n="bank_title">بيانات بنكك:</b>
+          <span>3326720 — عبدالعظيم الأحمدي</span><br/>
+          <b data-i18n="cancel_title">سياسة الإلغاء:</b>
+          <span data-i18n="cancel_text">يمكن إلغاء الطلب خلال أول 10 دقائق فقط من الطلب.</span>
+        </div>
+
+        <div class="socials">
+          <a href="https://www.facebook.com/share/17ZDeu4zFZ/" target="_blank" rel="noopener">📘 Facebook</a>
+          <a href="https://www.instagram.com/samaha_restaurant?igsh=MWx0MWRteXhhZnQ0Mg==" target="_blank" rel="noopener">📸 Instagram</a>
+          <a href="https://www.tiktok.com/@samaha_restaurant?_r=1&_t=ZM-92tum74NwAy" target="_blank" rel="noopener">🎵 TikTok</a>
+          <a href="#location">📍 <span data-i18n="open_location">الموقع</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px">
+          <div>
+            <div style="font-weight:900" data-i18n="quick_title">طلب سريع</div>
+            <div class="muted small" data-i18n="quick_note">اختر الأصناف من المنيو واضغط “أضف” ثم أرسل الطلب عبر واتساب.</div>
+          </div>
+          <div class="pill">🧾 <span data-i18n="cart">السلة</span>: <b id="cartCount">0</b></div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="hint">
+          <b data-i18n="delivery_fee">رسوم التوصيل:</b> <span data-i18n="delivery_fee_value">حسب المنطقة</span><br/>
+          <b data-i18n="seating">الجلسات:</b> <span data-i18n="seating_value">جلسات عائلية وجميع أنواع الجلسات</span>
+        </div>
+
+        <div class="hr"></div>
+
+        <a class="btn btn-red" href="#order" style="width:100%; justify-content:center">
+          🛒 <span data-i18n="go_order">اذهب للطلب الآن</span>
+        </a>
+
+        <div class="small muted" style="margin-top:10px" data-i18n="note_images">
+          * الصور أسلوب عالمي (للتحسين البصري) وقد تكون توضيحية.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="menu_title">المنيو</h3>
+          <p class="muted" data-i18n="menu_sub">اختر القسم واضف الأصناف للسلة</p>
+        </div>
+        <a class="btn btn-ghost" href="#order">➡️ <span data-i18n="to_order">إلى الطلب</span></a>
+      </div>
+
+      <div class="tabs" id="tabs"></div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="order_title">إرسال الطلب</h3>
+          <p class="muted" data-i18n="order_sub">سيتم فتح واتساب برسالة جاهزة (بدون بريد / بدون إضافات)</p>
+        </div>
+        <a class="btn btn-ghost" href="#menu">⬅️ <span data-i18n="back_menu">رجوع للمنيو</span></a>
+      </div>
+
+      <div class="panel">
+        <form class="form" id="orderForm">
+          <div class="grid2">
+            <div>
+              <label data-i18n="f_name">الاسم</label>
+              <input id="oName" required placeholder="مثال: محمد" />
+            </div>
+            <div>
+              <label data-i18n="f_phone">رقم الهاتف</label>
+              <input id="oPhone" required inputmode="tel" placeholder="مثال: 09xxxxxxx" />
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <label data-i18n="f_area">منطقة التوصيل</label>
+              <input id="oArea" placeholder="داخل محلية بربر" value="داخل محلية بربر" />
+            </div>
+            <div>
+              <label data-i18n="f_address">العنوان داخل بربر</label>
+              <input id="oAddress" placeholder="اكتب أقرب معلم / شارع" />
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <label data-i18n="pay_method">طريقة الدفع</label>
+              <select id="payMethod">
+                <option value="bankak" data-i18n="pay_bankak">بنكك</option>
+                <option value="cash" data-i18n="pay_cash">عند الاستلام</option>
+              </select>
+            </div>
+            <div>
+              <label data-i18n="pay_ref">رقم العملية (Transaction ID)</label>
+              <input id="payRef" placeholder="مثال: 123456" />
+            </div>
+          </div>
+
+          <div>
+            <label data-i18n="f_notes">ملاحظات (اختياري)</label>
+            <textarea id="oNotes" placeholder="مثال: بدون شطة / زيادة صوص..."></textarea>
+          </div>
+
+          <div class="hint">
+            <b data-i18n="bank_info_title">بيانات الدفع (بنكك):</b>
+            <div>3326720 — عبدالعظيم الأحمدي</div>
+            <div class="small muted" data-i18n="receipt_tip">
+              ملاحظة: GitHub Pages لا يرفع صور الإيصال تلقائيًا. بعد فتح واتساب، أرسل صورة الإيصال داخل نفس المحادثة.
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap">
+              <div class="pill">🧾 <span data-i18n="cart">السلة</span>: <b id="cartCount2">0</b></div>
+              <button type="button" class="btn btn-ghost" id="clearCartBtn">🧹 <span data-i18n="clear_cart">تفريغ السلة</span></button>
+            </div>
+
+            <div class="cartlist" id="cartList"></div>
+          </div>
+
+          <div class="hr"></div>
+
+          <button class="btn btn-red" type="submit" style="justify-content:center">
+            💬 <span data-i18n="send_whatsapp">إرسال الطلب عبر واتساب</span>
+          </button>
+
+          <div class="muted small" data-i18n="privacy_note">
+            لن يتم حفظ بياناتك — يتم استخدامها فقط لتجهيز رسالة واتساب.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE -->
+  <section id="reserve">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="reserve_title">حجز طاولة</h3>
+          <p class="muted" data-i18n="reserve_sub">الحجز بعربون 5000 ج يُدفع في نفس حساب بنكك</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <form class="form" id="reserveForm">
+          <div class="grid3">
+            <div>
+              <label data-i18n="f_name">الاسم</label>
+              <input id="rName" required />
+            </div>
+            <div>
+              <label data-i18n="f_phone">رقم الهاتف</label>
+              <input id="rPhone" required inputmode="tel" />
+            </div>
+            <div>
+              <label data-i18n="people">عدد الأشخاص (حتى 8)</label>
+              <input id="rPeople" required type="number" min="1" max="8" value="2" />
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <label data-i18n="date">التاريخ</label>
+              <input id="rDate" type="date" required />
+            </div>
+            <div>
+              <label data-i18n="time">الوقت</label>
+              <input id="rTime" type="time" required />
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <label data-i18n="time_from">مواعيد الحجز من</label>
+              <input id="rFrom" placeholder="مثال: 6:00 م" />
+            </div>
+            <div>
+              <label data-i18n="time_to">حتى</label>
+              <input id="rTo" placeholder="مثال: 10:00 م" />
+            </div>
+          </div>
+
+          <div>
+            <label data-i18n="f_notes">ملاحظات (اختياري)</label>
+            <input id="rNotes" placeholder="مثال: طاولة عائلية / داخلية..." />
+          </div>
+
+          <div class="hint">
+            <b data-i18n="deposit_title">العربون:</b>
+            <span data-i18n="deposit_text">5000 جنيه — يُدفع في حساب بنكك التالي:</span><br/>
+            <b>3326720 — عبدالعظيم الأحمدي</b>
+          </div>
+
+          <button class="btn btn-yellow" type="submit" style="justify-content:center">
+            💬 <span data-i18n="send_reserve">إرسال الحجز عبر واتساب</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="location_title">الموقع</h3>
+          <p class="muted" data-i18n="location_sub">بربر - الدكة - الشارع الرئيسي - شمال كلية الشريعة و القانون</p>
+        </div>
+        <a class="btn btn-ghost" id="mapsBtn" href="#" target="_blank" rel="noopener">
+          📍 <span data-i18n="open_maps">افتح في خرائط Google</span>
+        </a>
+      </div>
+
+      <div class="two-col">
+        <div class="panel" style="text-align:start; line-height:1.9">
+          <div class="pill" style="margin-bottom:10px">📌 <b data-i18n="address">العنوان</b></div>
+          <div style="font-weight:900; font-size:16px">
+            بربر - الدكة - الشارع الرئيسي - شمال كلية الشريعة و القانون
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="muted">
+            🕘 <b data-i18n="hours">ساعات العمل</b>: <span id="hoursLong">جميع أيام الأسبوع من 9 صباحًا حتى 9 مساءً</span><br/>
+            🚚 <b data-i18n="delivery">التوصيل</b>: <span data-i18n="delivery_long">داخل محلية بربر بولاية نهر النيل السودان</span><br/>
+            ⏱️ <b data-i18n="eta">المدة</b>: <span data-i18n="eta_value">30–40 دقيقة</span><br/>
+            💰 <b data-i18n="delivery_fee">رسوم التوصيل</b>: <span data-i18n="delivery_fee_value">حسب المنطقة</span>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="socials">
+            <a href="https://www.facebook.com/share/17ZDeu4zFZ/" target="_blank" rel="noopener">📘 Facebook</a>
+            <a href="https://www.instagram.com/samaha_restaurant?igsh=MWx0MWRteXhhZnQ0Mg==" target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://www.tiktok.com/@samaha_restaurant?_r=1&_t=ZM-92tum74NwAy" target="_blank" rel="noopener">🎵 TikTok</a>
+          </div>
+        </div>
+
+        <div>
+          <iframe
+            title="Google Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%D8%A8%D8%B1%D8%A8%D8%B1%20%D8%A7%D9%84%D8%AF%D9%83%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="about_title">عن المطعم</h3>
+          <p class="muted" data-i18n="about_sub">تأسس 2024 — هدفنا تقديم أفضل جودة للمواطن السوداني الأصيل</p>
+        </div>
+      </div>
+
+      <div class="panel" style="text-align:start; line-height:1.9">
+        <p data-i18n="about_text">
+          مطعم سماحة السياحي المطعم الأول و الأفضل على مستوى محلية بربر موجود في خدمتكم لتوفير أفضل الأطعمة ذات الجودة العالية.
+        </p>
+        <div class="hr"></div>
+        <div class="hint">
+          <b data-i18n="mission_title">الرسالة:</b>
+          <span data-i18n="mission_text">هدفنا تقديم افضل جودة للمواطن السوداني الأصيل.</span><br/>
+          <b data-i18n="management_title">الإدارة:</b>
+          <span data-i18n="management_text">عبدالعظيم الأحمدي.</span><br/>
+          <b data-i18n="halal_title">حلال:</b>
+          <span data-i18n="halal_text">جميع الأطعمة حلال 100%.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3 data-i18n="reviews_title">آراء العملاء</h3>
+          <p class="muted" data-i18n="reviews_sub">تقييمات حقيقية (كما زودتنا بها)</p>
+        </div>
+      </div>
+
+      <div class="reviews">
+        <div class="quote">
+          <b>محمد</b> — <span class="stars">★★★★★</span><br/>
+          <span data-i18n="rev1">من أفضل المطاعم على حدود المحلية كاملة، أنصح به.</span>
+        </div>
+        <div class="quote">
+          <b>أسامة</b> — <span class="stars">★★★★★</span><br/>
+          <span data-i18n="rev2">المطعم رائع جدًا والتعامل راقي والويتر ممتازين.</span>
+        </div>
+        <div class="quote">
+          <b>إبراهيم</b> — <span class="stars">★★★★☆</span><br/>
+          <span data-i18n="rev3">المطعم سمح اسم على مسمى لكن محتاجين جلسات أكثر خصوصية.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <p>© 2026 مطعم سماحة السياحي</p>
-  <p>يمكن إلغاء الطلب خلال أول 10 دقائق فقط</p>
+  <div class="container footergrid">
+    <div>
+      <div style="font-weight:900; font-size:16px" id="footerName">مطعم سماحة السياحي</div>
+      <div class="legal" data-i18n="footer_desc">
+        محلية بربر — ولاية نهر النيل — السودان. الطلب عبر واتساب أو الاتصال، والحجز متاح عبر واتساب.
+      </div>
+      <div class="legal">
+        <span data-i18n="footer_cancel">سياسة الإلغاء:</span> <span data-i18n="cancel_text">10 دقائق فقط.</span><br/>
+        <span data-i18n="footer_pay">الدفع:</span> <span data-i18n="payment_text">بنكك</span> — <b>3326720</b><br/>
+        <span data-i18n="footer_rights">©</span> <span id="year"></span> <span data-i18n="rights">جميع الحقوق محفوظة</span>
+      </div>
+    </div>
+
+    <div class="legal">
+      <b data-i18n="contact">تواصل</b><br/>
+      واتساب: <a id="footerWhats" href="#" target="_blank" rel="noopener">+249906183477</a><br/>
+      هاتف: <a id="footerCall" href="tel:+249114050969">+249114050969</a><br/>
+      <a id="footerMaps" href="#" target="_blank" rel="noopener" data-i18n="open_maps">افتح في خرائط Google</a>
+    </div>
+  </div>
 </footer>
 
+<!-- Fixed WhatsApp + Call buttons (as you requested) -->
+<div class="floatbar">
+  <a class="btn btn-red" id="floatWhats" href="#" target="_blank" rel="noopener">💬 <span id="floatWhatsTxt">واتساب</span></a>
+  <a class="btn btn-yellow" id="floatCall" href="tel:+249114050969">📞 <span id="floatCallTxt">اتصال</span></a>
+</div>
+
 <script>
-let ar=true;
-function toggleLang(){
-  ar=!ar;
-  document.documentElement.lang=ar?"ar":"en";
-  document.documentElement.dir=ar?"rtl":"ltr";
-  document.querySelector(".lang").innerText=ar?"EN":"AR";
+/* =========================
+   SETTINGS (edit anytime)
+   ========================= */
+const SETTINGS = {
+  name_ar: "مطعم سماحة السياحي",
+  name_en: "samaha-restaurant",
+  whatsapp: "+249906183477",
+  phone: "+249114050969",
+  maps: "https://maps.app.goo.gl/Hm1TH8R2QPoBvUDm8?g_st=ac",
+  hours_short_ar: "9:00 ص – 9:00 م",
+  hours_long_ar: "جميع أيام الأسبوع من 9 صباحًا حتى 9 مساءً",
+  hours_short_en: "9:00 AM – 9:00 PM",
+  hours_long_en: "Every day from 9:00 AM to 9:00 PM",
+  delivery_ar: "داخل محلية بربر",
+  delivery_long_ar: "داخل محلية بربر بولاية نهر النيل السودان",
+  delivery_en: "Within Berber locality",
+  delivery_long_en: "Delivery within Berber locality, River Nile State, Sudan",
+  eta_ar: "30–40 دقيقة",
+  eta_en: "30–40 minutes",
+  delivery_fee_ar: "حسب المنطقة",
+  delivery_fee_en: "Depends on area",
+  bankak_account: "3326720",
+  bankak_name_ar: "عبدالعظيم الأحمدي",
+  bankak_name_en: "Abdulazim Al-Ahmadi",
+  deposit_ar: "5000 جنيه",
+  deposit_en: "5000 SDG"
+};
 
-  document.getElementById("title").innerText=ar?"🍽 مطعم سماحة السياحي":"🍽 Samaha Restaurant";
-  document.getElementById("slogan").innerText=ar?"وجبات سمحة سماحة يبقى مطعم سماحة":"Delicious Meals, Samaha Always the Choice";
-  document.getElementById("desc").innerText=ar?"أفضل مطعم في محلية بربر":"Best restaurant in Berber locality";
-  document.getElementById("menuTitle").innerText=ar?"المنيو":"Menu";
-  document.getElementById("orderTitle").innerText=ar?"طلب ودفع إلكتروني":"Order & Payment";
-  document.getElementById("reserveTitle").innerText=ar?"حجز طاولة":"Table Reservation";
-  document.getElementById("reserveText").innerText=ar?"الحد الأقصى 8 أشخاص – الحجز عبر واتساب":"Max 8 people – WhatsApp reservation";
-  document.getElementById("locationTitle").innerText=ar?"الموقع":"Location";
-  document.getElementById("aboutTitle").innerText=ar?"عن المطعم":"About Us";
-  document.getElementById("aboutText").innerText=ar?
-  "مطعم سماحة السياحي المطعم الأول والأفضل على مستوى محلية بربر":
-  "Samaha Restaurant is the best restaurant in Berber locality";
+function digitsOnly(s){ return String(s).replace(/[^\d]/g,''); }
+function waLink(text){
+  return "https://wa.me/" + digitsOnly(SETTINGS.whatsapp) + "?text=" + encodeURIComponent(text);
 }
-</script>
 
+/* =========================
+   MENU DATA (global style images)
+   - using Unsplash with queries (works instantly)
+   ========================= */
+function img(q, sig){
+  const base = "https://images.unsplash.com/";
+  // Using fixed known good photos for stability would require multiple IDs.
+  // Here we use query-based approach via source.unsplash.com fallback-like style:
+  // We'll use "https://source.unsplash.com/..." which is stable for direct random images.
+  // But GitHub CSP sometimes: it works fine. We'll use source.unsplash.com for simplicity.
+  return "https://source.unsplash.com/800x600/?" + encodeURIComponent(q) + "&sig=" + sig;
+}
+
+const MENU = [
+  {
+    key:"juices",
+    title_ar:"عصائر",
+    title_en:"Juices",
+    items:[
+      {ar:"فراولة", en:"Strawberry", price_ar:"4000 ج", price_en:"4000 SDG", img: img("strawberry juice", 1)},
+      {ar:"فراولة بالحليب", en:"Strawberry Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img: img("strawberry milkshake", 2)},
+      {ar:"منقة", en:"Mango Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango juice", 3)},
+      {ar:"موز بالحليب", en:"Banana Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img: img("banana milkshake", 4)},
+      {ar:"أناناس بالحليب", en:"Pineapple Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img: img("pineapple milkshake", 5)},
+      {ar:"برتقال", en:"Orange Juice", price_ar:"2000 ج", price_en:"2000 SDG", img: img("orange juice", 6)},
+      {ar:"قريب فروت", en:"Grapefruit Juice", price_ar:"2500 ج", price_en:"2500 SDG", img: img("grapefruit juice", 7)},
+      {ar:"تفاح", en:"Apple Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple juice", 8)},
+      {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple milkshake", 9)},
+      {ar:"مشكل", en:"Mixed Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mixed juice", 10)},
+      {ar:"منقة بالاوريو", en:"Mango Oreo", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango oreo milkshake", 11)},
+      {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("special smoothie", 12)}
+    ]
+  },
+  {
+    key:"icecream",
+    title_ar:"آيسكريم (أحجام)",
+    title_en:"Ice Cream (Sizes)",
+    items:(()=>{
+      const flavors = [
+        {ar:"كاكاو", en:"Cocoa"}, {ar:"أوريو", en:"Oreo"}, {ar:"لوتس", en:"Lotus"},
+        {ar:"فراولة", en:"Strawberry"}, {ar:"كرز", en:"Cherry"}, {ar:"توت", en:"Berry"},
+        {ar:"كيوي", en:"Kiwi"}, {ar:"بطيخ", en:"Watermelon"}, {ar:"مشكل", en:"Mixed"},
+        {ar:"كرميل", en:"Caramel"}, {ar:"ليمون", en:"Lemon"}, {ar:"فانيليا", en:"Vanilla"}
+      ];
+      const sizes = [
+        {ar:"صغير", en:"Small", price_ar:"3000 ج", price_en:"3000 SDG"},
+        {ar:"وسط", en:"Medium", price_ar:"5000 ج", price_en:"5000 SDG"},
+        {ar:"كبير", en:"Large", price_ar:"7000 ج", price_en:"7000 SDG"}
+      ];
+      const out = [];
+      let sig = 30;
+      for(const f of flavors){
+        for(const s of sizes){
+          out.push({
+            ar:`آيسكريم ${f.ar} (${s.ar})`,
+            en:`${f.en} Ice Cream (${s.en})`,
+            price_ar:s.price_ar,
+            price_en:s.price_en,
+            img: img(`${f.en} ice cream`, sig++)
+          });
+        }
+      }
+      return out;
+    })()
+  },
+  {
+    key:"orders",
+    title_ar:"طلبات",
+    title_en:"Orders",
+    items:[
+      {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"8000 ج", price_en:"8000 SDG", img: img("grilled skewers", 70)},
+      {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"35,000 ج", price_en:"35,000 SDG", img: img("grilled chicken", 71)},
+      {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"17,500 ج", price_en:"17,500 SDG", img: img("half grilled chicken", 72)},
+      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img: img("crispy fries", 73)},
+      {ar:"بروست 4 قطع", en:"Broast 4 pcs", price_ar:"24,000 ج", price_en:"24,000 SDG", img: img("fried chicken", 74)},
+      {ar:"بروست 8 قطع", en:"Broast 8 pcs", price_ar:"48,000 ج", price_en:"48,000 SDG", img: img("fried chicken bucket", 75)},
+      {ar:"بروست 12 قطعة", en:"Broast 12 pcs", price_ar:"72,000 ج", price_en:"72,000 SDG", img: img("fried chicken platter", 76)},
+      {ar:"طلب كرسبي", en:"Crispy Order", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("crispy chicken", 77)}
+    ]
+  },
+  {
+    key:"sandwiches",
+    title_ar:"سندوتشات (فطيرة / عيش)",
+    title_en:"Sandwiches (Pita / Bread)",
+    items:[
+      {ar:"صاروخ سماحة (فطيرة/عيش)", en:"Samaha Rocket (Pita/Bread)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("shawarma sandwich", 90)},
+      {ar:"بيرقر عادي (فطيرة/عيش)", en:"Burger Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("burger", 91)},
+      {ar:"بيرقر جامبو (فطيرة/عيش)", en:"Burger Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("double burger", 92)},
+      {ar:"هوت دوغ عادي (فطيرة/عيش)", en:"Hot Dog Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("hot dog", 93)},
+      {ar:"هوت دوغ جامبو (فطيرة/عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("hotdog jumbo", 94)},
+      {ar:"كرسبي (فطيرة/عيش)", en:"Crispy (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("crispy chicken sandwich", 95)},
+      {ar:"شاورما (فطيرة/عيش)", en:"Shawarma (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("shawarma wrap", 96)},
+      {ar:"اقاشي عادي (فطيرة/عيش)", en:"Agashi Regular (Pita/Bread)", price_ar:"4000 ج", price_en:"4000 SDG", img: img("kebab sandwich", 97)},
+      {ar:"اقاشي جامبو (فطيرة/عيش)", en:"Agashi Jumbo (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("kebab wrap", 98)},
+      {ar:"طعمية (فطيرة/عيش)", en:"Falafel (Pita/Bread)", price_ar:"1500 ج", price_en:"1500 SDG", img: img("falafel sandwich", 99)},
+      {ar:"شيبس (فطيرة/عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("fries sandwich", 100)},
+      {ar:"طعمية & شيبس (فطيرة/عيش)", en:"Falafel & Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("falafel fries wrap", 101)}
+    ]
+  },
+  {
+    key:"pizza",
+    title_ar:"بيتزا",
+    title_en:"Pizza",
+    items:[
+      {ar:"بيتزا هوت دوغ (صغيرة)", en:"Hot Dog Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("hot dog pizza", 120)},
+      {ar:"بيتزا هوت دوغ (وسط)", en:"Hot Dog Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("hot dog pizza", 121)},
+      {ar:"بيتزا هوت دوغ (كبيرة)", en:"Hot Dog Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("hot dog pizza", 122)},
+      {ar:"بيتزا هوت دوغ (عائلية)", en:"Hot Dog Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img: img("hot dog pizza", 123)},
+
+      {ar:"بيتزا فراخ (صغيرة)", en:"Chicken Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("chicken pizza", 124)},
+      {ar:"بيتزا فراخ (وسط)", en:"Chicken Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("chicken pizza", 125)},
+      {ar:"بيتزا فراخ (كبيرة)", en:"Chicken Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("chicken pizza", 126)},
+      {ar:"بيتزا فراخ (عائلية)", en:"Chicken Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img: img("chicken pizza", 127)},
+
+      {ar:"بيتزا خضار (صغيرة)", en:"Veggie Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("vegetable pizza", 128)},
+      {ar:"بيتزا خضار (وسط)", en:"Veggie Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img: img("vegetable pizza", 129)},
+      {ar:"بيتزا خضار (كبيرة)", en:"Veggie Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("vegetable pizza", 130)},
+      {ar:"بيتزا خضار (عائلية)", en:"Veggie Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("vegetable pizza", 131)},
+
+      {ar:"بيتزا جبنة (صغيرة)", en:"Cheese Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("cheese pizza", 132)},
+      {ar:"بيتزا جبنة (وسط)", en:"Cheese Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img: img("cheese pizza", 133)},
+      {ar:"بيتزا جبنة (كبيرة)", en:"Cheese Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("cheese pizza", 134)},
+      {ar:"بيتزا جبنة (عائلية)", en:"Cheese Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("cheese pizza", 135)},
+
+      {ar:"بيتزا مشكل (صغيرة)", en:"Mixed Pizza (Small)", price_ar:"14,000 ج", price_en:"14,000 SDG", img: img("mixed pizza", 136)},
+      {ar:"بيتزا مشكل (وسط)", en:"Mixed Pizza (Medium)", price_ar:"19,000 ج", price_en:"19,000 SDG", img: img("mixed pizza", 137)},
+      {ar:"بيتزا مشكل (كبيرة)", en:"Mixed Pizza (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("mixed pizza", 138)},
+      {ar:"بيتزا مشكل (عائلية)", en:"Mixed Pizza (Family)", price_ar:"27,000 ج", price_en:"27,000 SDG", img: img("mixed pizza", 139)},
+
+      {ar:"بيتزا أطراف جبن", en:"Cheese Stuffed Crust Pizza", price_ar:"28,000 ج", price_en:"28,000 SDG", img: img("stuffed crust pizza", 140)}
+    ]
+  },
+  {
+    key:"pastries",
+    title_ar:"فطائر",
+    title_en:"Pastries",
+    items:[
+      {ar:"فطائر مصرية حلوة (وسط)", en:"Egyptian Sweet Pastry (Medium)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("sweet pastry", 160)},
+      {ar:"فطائر مصرية حلوة (كبيرة)", en:"Egyptian Sweet Pastry (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("sweet pastry", 161)},
+      {ar:"فطائر مصرية مالحة (وسط)", en:"Egyptian Savory Pastry (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("savory pastry", 162)},
+      {ar:"فطائر مصرية مالحة (كبيرة)", en:"Egyptian Savory Pastry (Large)", price_ar:"19,000 ج", price_en:"19,000 SDG", img: img("savory pastry", 163)},
+      {ar:"فطائر شامية", en:"Shami Pastry", price_ar:"7000 ج", price_en:"7000 SDG", img: img("middle eastern pastry", 164)},
+      {ar:"كلزوني", en:"Calzone", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("calzone", 165)}
+    ]
+  }
+];
+
+/* =========================
+   i18n
+   ========================= */
+let LANG = "ar";
+
+const I18N = {
+  ar: {
+    nav_menu:"المنيو", nav_order:"اطلب", nav_reserve:"حجز", nav_location:"الموقع", nav_about:"عنّا",
+    hero_welcome:"أهلاً بكم في", hero_slogan:"وجبات سمحة سماحة يبقى مطعم سماحة",
+    cta_whatsapp:"اطلب عبر واتساب", cta_call:"اتصل بنا", cta_menu:"شوف المنيو",
+    hours:"ساعات العمل", delivery:"التوصيل", delivery_value:"داخل محلية بربر",
+    eta:"المدة", eta_value:"30–40 دقيقة",
+    payment_title:"الدفع:", payment_text:"بنكك",
+    bank_title:"بيانات بنكك:", cancel_title:"سياسة الإلغاء:", cancel_text:"يمكن إلغاء الطلب خلال أول 10 دقائق فقط من الطلب.",
+    quick_title:"طلب سريع", quick_note:"اختر الأصناف من المنيو واضغط “أضف” ثم أرسل الطلب عبر واتساب.",
+    cart:"السلة", go_order:"اذهب للطلب الآن",
+    note_images:"* الصور أسلوب عالمي (للتحسين البصري) وقد تكون توضيحية.",
+    delivery_fee:"رسوم التوصيل", delivery_fee_value:"حسب المنطقة",
+    seating:"الجلسات", seating_value:"جلسات عائلية وجميع أنواع الجلسات",
+    menu_title:"المنيو", menu_sub:"اختر القسم واضف الأصناف للسلة", to_order:"إلى الطلب",
+    order_title:"إرسال الطلب", order_sub:"سيتم فتح واتساب برسالة جاهزة (بدون بريد / بدون إضافات)",
+    back_menu:"رجوع للمنيو",
+    f_name:"الاسم", f_phone:"رقم الهاتف", f_area:"منطقة التوصيل", f_address:"العنوان داخل بربر", f_notes:"ملاحظات (اختياري)",
+    pay_method:"طريقة الدفع", pay_bankak:"بنكك", pay_cash:"عند الاستلام", pay_ref:"رقم العملية (Transaction ID)",
+    bank_info_title:"بيانات الدفع (بنكك):",
+    receipt_tip:"ملاحظة: GitHub Pages لا يرفع صور الإيصال تلقائيًا. بعد فتح واتساب، أرسل صورة الإيصال داخل نفس المحادثة.",
+    clear_cart:"تفريغ السلة",
+    send_whatsapp:"إرسال الطلب عبر واتساب",
+    privacy_note:"لن يتم حفظ بياناتك — يتم استخدامها فقط لتجهيز رسالة واتساب.",
+    reserve_title:"حجز طاولة",
+    reserve_sub:"الحجز بعربون 5000 ج يُدفع في نفس حساب بنكك",
+    people:"عدد الأشخاص (حتى 8)", date:"التاريخ", time:"الوقت", time_from:"مواعيد الحجز من", time_to:"حتى",
+    deposit_title:"العربون:", deposit_text:"5000 جنيه — يُدفع في حساب بنكك التالي:",
+    send_reserve:"إرسال الحجز عبر واتساب",
+    location_title:"الموقع",
+    location_sub:"بربر - الدكة - الشارع الرئيسي - شمال كلية الشريعة و القانون",
+    open_maps:"افتح في خرائط Google",
+    address:"العنوان",
+    delivery_long:"داخل محلية بربر بولاية نهر النيل السودان",
+    open_location:"الموقع",
+    about_title:"عن المطعم",
+    about_sub:"تأسس 2024 — هدفنا تقديم أفضل جودة للمواطن السوداني الأصيل",
+    about_text:"مطعم سماحة السياحي المطعم الأول و الأفضل على مستوى محلية بربر موجود في خدمتكم لتوفير أفضل الأطعمة ذات الجودة العالية.",
+    mission_title:"الرسالة:", mission_text:"هدفنا تقديم افضل جودة للمواطن السوداني الأصيل",
+    management_title:"الإدارة:", management_text:"عبدالعظيم الاحمدي",
+    halal_title:"حلال:", halal_text:"جميع الأطعمة حلال 100%",
+    reviews_title:"آراء العملاء", reviews_sub:"تقييمات حقيقية (كما زودتنا بها)",
+    rev1:"من أفضل المطاعم على حدود المحلية كاملة، أنصح به.",
+    rev2:"المطعم رائع جدًا والتعامل راقي والويتر ممتازين.",
+    rev3:"المطعم سمح اسم على مسمى لكن محتاجين جلسات أكثر خصوصية.",
+    footer_desc:"محلية بربر — ولاية نهر النيل — السودان. الطلب عبر واتساب أو الاتصال، والحجز متاح عبر واتساب.",
+    footer_cancel:"سياسة الإلغاء:", footer_pay:"الدفع:", footer_rights:"©", rights:"جميع الحقوق محفوظة",
+    contact:"تواصل",
+    add:"أضف",
+    remove:"حذف",
+    item:"صنف",
+    qty:"العدد",
+    cart_empty:"السلة فارغة — ابدأ بإضافة أصناف من المنيو."
+  },
+  en: {
+    nav_menu:"Menu", nav_order:"Order", nav_reserve:"Reserve", nav_location:"Location", nav_about:"About",
+    hero_welcome:"Welcome to", hero_slogan:"Delicious Meals — Samaha Always the Choice",
+    cta_whatsapp:"Order on WhatsApp", cta_call:"Call Us", cta_menu:"View Menu",
+    hours:"Hours", delivery:"Delivery", delivery_value:"Within Berber locality",
+    eta:"ETA", eta_value:"30–40 minutes",
+    payment_title:"Payment:", payment_text:"Bankak",
+    bank_title:"Bankak details:", cancel_title:"Cancellation:", cancel_text:"Orders can be cancelled within the first 10 minutes only.",
+    quick_title:"Quick Order", quick_note:"Pick items and tap “Add”, then send your order on WhatsApp.",
+    cart:"Cart", go_order:"Go to Order Now",
+    note_images:"* Global-style images (for visuals) may be illustrative.",
+    delivery_fee:"Delivery fee", delivery_fee_value:"Depends on area",
+    seating:"Seating", seating_value:"Family seating and all seating types available",
+    menu_title:"Menu", menu_sub:"Choose a category and add items to cart", to_order:"Go to Order",
+    order_title:"Send Order", order_sub:"WhatsApp will open with a ready message (no email / no add-ons)",
+    back_menu:"Back to menu",
+    f_name:"Name", f_phone:"Phone", f_area:"Delivery area", f_address:"Address in Berber", f_notes:"Notes (optional)",
+    pay_method:"Payment method", pay_bankak:"Bankak", pay_cash:"Cash on delivery", pay_ref:"Transaction ID",
+    bank_info_title:"Payment info (Bankak):",
+    receipt_tip:"Note: GitHub Pages can't upload receipt images automatically. After WhatsApp opens, send the receipt image in the same chat.",
+    clear_cart:"Clear cart",
+    send_whatsapp:"Send order on WhatsApp",
+    privacy_note:"No data is stored — used only to generate a WhatsApp message.",
+    reserve_title:"Table Reservation",
+    reserve_sub:"Reservation requires a 5000 SDG deposit paid to the same Bankak account",
+    people:"People (max 8)", date:"Date", time:"Time", time_from:"Reservation time from", time_to:"to",
+    deposit_title:"Deposit:", deposit_text:"5000 SDG — pay to this Bankak account:",
+    send_reserve:"Send reservation on WhatsApp",
+    location_title:"Location",
+    location_sub:"Berber — Aldakka — Main Street — North of Sharia & Law College",
+    open_maps:"Open in Google Maps",
+    address:"Address",
+    delivery_long:"Delivery within Berber locality, River Nile State, Sudan",
+    open_location:"Location",
+    about_title:"About",
+    about_sub:"Founded 2024 — Our goal is to deliver the best quality for authentic Sudanese people",
+    about_text:"Samaha Tourist Restaurant is the #1 choice in Berber locality, serving high-quality delicious food.",
+    mission_title:"Mission:", mission_text:"Our goal is to deliver the best quality for authentic Sudanese citizens.",
+    management_title:"Management:", management_text:"Abdulazim Al-Ahmadi",
+    halal_title:"Halal:", halal_text:"All food is 100% halal",
+    reviews_title:"Customer Reviews", reviews_sub:"Real reviews (provided by you)",
+    rev1:"One of the best restaurants across the locality border — highly recommended.",
+    rev2:"Amazing place, classy treatment, and excellent staff.",
+    rev3:"Great as the name says, but needs more private seating.",
+    footer_desc:"Berber locality — River Nile State — Sudan. Order via WhatsApp or call. Reservations via WhatsApp.",
+    footer_cancel:"Cancellation:", footer_pay:"Payment:", footer_rights:"©", rights:"All rights reserved",
+    contact:"Contact",
+    add:"Add",
+    remove:"Remove",
+    item:"Item",
+    qty:"Qty",
+    cart_empty:"Cart is empty — add items from the menu."
+  }
+};
+
+function t(k){ return (I18N[LANG] && I18N[LANG][k]) ? I18N[LANG][k] : k; }
+
+/* =========================
+   Cart
+   ========================= */
+const CART = []; // {name, price, qty}
+
+function addToCart(menuItem){
+  const name = (LANG==="ar") ? menuItem.ar : menuItem.en;
+  const price = (LANG==="ar") ? menuItem.price_ar : menuItem.price_en;
+
+  const found = CART.find(x => x.name === name && x.price === price);
+  if(found) found.qty += 1;
+  else CART.push({name, price, qty: 1});
+  renderCart();
+}
+
+function decQty(idx){
+  if(!CART[idx]) return;
+  CART[idx].qty -= 1;
+  if(CART[idx].qty <= 0) CART.splice(idx,1);
+  renderCart();
+}
+function incQty(idx){
+  if(!CART[idx]) return;
+  CART[idx].qty += 1;
+  renderCart();
+}
+function removeItem(idx){
+  CART.splice(idx,1);
+  renderCart();
+}
+function clearCart(){
+  CART.length = 0;
+  renderCart();
+}
+function cartCount(){
+  return CART.reduce((s,x)=>s + x.qty, 0);
+}
+
+function renderCart(){
+  const c1 = document.getElementById("cartCount");
+  const c2 = document.getElementById("cartCount2");
+  c1.textContent = cartCount();
+  c2.textContent = cartCount();
+
+  const list = document.getElementById("cartList");
+  list.innerHTML = "";
+
+  if(CART.length === 0){
+    const d = document.createElement("div");
+    d.className = "hint";
+    d.textContent = t("cart_empty");
+    list.appendChild(d);
+    return;
+  }
+
+  CART.forEach((it, idx)=>{
+    const row = document.createElement("div");
+    row.className = "cartitem";
+    row.innerHTML = `
+      <div style="min-width:0">
+        <div style="font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${it.name}</div>
+        <div class="muted small">${it.price}</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:flex-end">
+        <button type="button" class="qtybtn" aria-label="decrease">−</button>
+        <div class="pill" style="padding:6px 10px"><b>${t("qty")}:</b> ${it.qty}</div>
+        <button type="button" class="qtybtn" aria-label="increase">+</button>
+        <button type="button" class="remove">${t("remove")}</button>
+      </div>
+    `;
+    const [btnDec, , btnInc, btnRemove] = row.querySelectorAll("button");
+    btnDec.onclick = ()=>decQty(idx);
+    btnInc.onclick = ()=>incQty(idx);
+    btnRemove.onclick = ()=>removeItem(idx);
+    list.appendChild(row);
+  });
+}
+
+/* =========================
+   Menu rendering
+   ========================= */
+let activeCat = 0;
+
+function renderTabs(){
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+  MENU.forEach((cat, idx)=>{
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "tab" + (idx===activeCat ? " active" : "");
+    b.textContent = (LANG==="ar") ? cat.title_ar : cat.title_en;
+    b.onclick = ()=>{
+      activeCat = idx;
+      renderMenu();
+    };
+    tabs.appendChild(b);
+  });
+}
+
+function renderMenu(){
+  renderTabs();
+  const grid = document.getElementById("menuGrid");
+  grid.innerHTML = "";
+
+  const cat = MENU[activeCat];
+  cat.items.forEach((it)=>{
+    const name = (LANG==="ar") ? it.ar : it.en;
+    const price = (LANG==="ar") ? it.price_ar : it.price_en;
+
+    const card = document.createElement("div");
+    card.className = "item";
+    card.innerHTML = `
+      <div class="imgwrap"><img src="${it.img}" alt="${name}" loading="lazy"></div>
+      <div class="info">
+        <h4>${name}</h4>
+        <div class="row">
+          <span class="price">${price}</span>
+          <button class="add" type="button">${t("add")} ➕</button>
+        </div>
+      </div>
+    `;
+    card.querySelector(".add").onclick = ()=>addToCart(it);
+    grid.appendChild(card);
+  });
+}
+
+/* =========================
+   Language toggle
+   ========================= */
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.documentElement.dir = (LANG==="ar") ? "rtl" : "ltr";
+
+  // static i18n elements
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    el.textContent = t(key);
+  });
+
+  // names
+  document.getElementById("brandName").textContent = (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
+  document.getElementById("heroName").textContent  = (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
+  document.getElementById("footerName").textContent= (LANG==="ar") ? SETTINGS.name_ar : SETTINGS.name_en;
+
+  // hours
+  document.getElementById("hoursText").textContent = (LANG==="ar") ? SETTINGS.hours_short_ar : SETTINGS.hours_short_en;
+  document.getElementById("hoursLong").textContent = (LANG==="ar") ? SETTINGS.hours_long_ar : SETTINGS.hours_long_en;
+
+  // badge + established line
+  document.getElementById("halalBadge").textContent = (LANG==="ar") ? "✅ حلال 100%" : "✅ 100% Halal";
+  document.getElementById("estLine").textContent = (LANG==="ar")
+    ? "تأسس 2024 • الإدارة: عبدالعظيم الاحمدي"
+    : "Founded 2024 • Management: Abdulazim Al-Ahmadi";
+
+  // floating labels
+  document.getElementById("floatWhatsTxt").textContent = (LANG==="ar") ? "واتساب" : "WhatsApp";
+  document.getElementById("floatCallTxt").textContent = (LANG==="ar") ? "اتصال" : "Call";
+
+  // lang button
+  document.getElementById("langBtn").textContent = (LANG==="ar") ? "EN" : "AR";
+
+  // rerender menu & cart (names language)
+  renderMenu();
+  renderCart();
+}
+
+/* =========================
+   WhatsApp submission (Orders + Reserve)
+   ========================= */
+function openWhatsApp(message){
+  window.open(waLink(message), "_blank", "noopener");
+}
+
+function buildCartLines(){
+  if(CART.length === 0){
+    return (LANG==="ar") ? "— (لا توجد أصناف في السلة)" : "— (No items in cart)";
+  }
+  return CART.map(x=>`- ${x.name} ×${x.qty} (${x.price})`).join("\n");
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  // links
+  const waBase = "https://wa.me/" + digitsOnly(SETTINGS.whatsapp);
+  document.getElementById("heroWhats").href = waBase;
+  document.getElementById("footerWhats").href = waBase;
+  document.getElementById("floatWhats").href = waBase;
+
+  document.getElementById("heroCall").href = "tel:" + SETTINGS.phone;
+  document.getElementById("footerCall").href = "tel:" + SETTINGS.phone;
+  document.getElementById("floatCall").href = "tel:" + SETTINGS.phone;
+
+  document.getElementById("mapsBtn").href = SETTINGS.maps;
+  document.getElementById("footerMaps").href = SETTINGS.maps;
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // clear cart
+  document.getElementById("clearCartBtn").addEventListener("click", clearCart);
+
+  // initial render
+  renderMenu();
+  renderCart();
+  applyLang();
+
+  // lang toggle
+  document.getElementById("langBtn").addEventListener("click", ()=>{
+    LANG = (LANG==="ar") ? "en" : "ar";
+    applyLang();
+  });
+
+  // order form
+  document.getElementById("orderForm").addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    const name = document.getElementById("oName").value.trim();
+    const phone = document.getElementById("oPhone").value.trim();
+    const area = document.getElementById("oArea").value.trim();
+    const addr = document.getElementById("oAddress").value.trim();
+    const payMethod = document.getElementById("payMethod").value;
+    const payRef = document.getElementById("payRef").value.trim();
+    const notes = document.getElementById("oNotes").value.trim();
+
+    const payText = (payMethod === "cash")
+      ? (LANG==="ar" ? "عند الاستلام" : "Cash on delivery")
+      : (LANG==="ar" ? "بنكك" : "Bankak");
+
+    const header = (LANG==="ar") ? `طلب جديد — ${SETTINGS.name_ar}` : `New Order — ${SETTINGS.name_en}`;
+    const msg =
+`${header}
+
+${LANG==="ar" ? "الاسم" : "Name"}: ${name}
+${LANG==="ar" ? "الهاتف" : "Phone"}: ${phone}
+${LANG==="ar" ? "منطقة التوصيل" : "Delivery area"}: ${area || (LANG==="ar" ? "غير محدد" : "Not specified")}
+${LANG==="ar" ? "العنوان" : "Address"}: ${addr || (LANG==="ar" ? "غير مذكور" : "Not provided")}
+
+${LANG==="ar" ? "الأصناف" : "Items"}:
+${buildCartLines()}
+
+${LANG==="ar" ? "طريقة الدفع" : "Payment"}: ${payText}
+${LANG==="ar" ? "رقم العملية" : "Transaction ID"}: ${payRef || (LANG==="ar" ? "غير متوفر" : "N/A")}
+${LANG==="ar" ? "بيانات بنكك" : "Bankak account"}: ${SETTINGS.bankak_account} — ${(LANG==="ar") ? SETTINGS.bankak_name_ar : SETTINGS.bankak_name_en}
+
+${LANG==="ar" ? "ملاحظات" : "Notes"}: ${notes || (LANG==="ar" ? "لا يوجد" : "None")}
+
+${LANG==="ar" ? "ملاحظة: الرجاء إرسال صورة الإيصال داخل نفس المحادثة بعد إرسال الرسالة." : "Note: Please send the receipt image in the same chat after sending this message."}
+
+${LANG==="ar" ? "سياسة الإلغاء: خلال أول 10 دقائق فقط." : "Cancellation: within the first 10 minutes only."}`;
+
+    openWhatsApp(msg);
+  });
+
+  // reserve form
+  document.getElementById("reserveForm").addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    const name = document.getElementById("rName").value.trim();
+    const phone = document.getElementById("rPhone").value.trim();
+    const people = document.getElementById("rPeople").value;
+    const date = document.getElementById("rDate").value;
+    const time = document.getElementById("rTime").value;
+    const from = document.getElementById("rFrom").value.trim();
+    const to = document.getElementById("rTo").value.trim();
+    const notes = document.getElementById("rNotes").value.trim();
+
+    const header = (LANG==="ar") ? `طلب حجز طاولة — ${SETTINGS.name_ar}` : `Table Reservation — ${SETTINGS.name_en}`;
+    const msg =
+`${header}
+
+${LANG==="ar" ? "الاسم" : "Name"}: ${name}
+${LANG==="ar" ? "الهاتف" : "Phone"}: ${phone}
+${LANG==="ar" ? "عدد الأشخاص" : "People"}: ${people}/8
+${LANG==="ar" ? "التاريخ" : "Date"}: ${date}
+${LANG==="ar" ? "الوقت" : "Time"}: ${time}
+
+${LANG==="ar" ? "مواعيد الحجز" : "Reservation window"}: ${from || (LANG==="ar" ? "غير محدد" : "Not set")} → ${to || (LANG==="ar" ? "غير محدد" : "Not set")}
+${LANG==="ar" ? "ملاحظات" : "Notes"}: ${notes || (LANG==="ar" ? "لا يوجد" : "None")}
+
+${LANG==="ar" ? "العربون" : "Deposit"}: ${(LANG==="ar") ? SETTINGS.deposit_ar : SETTINGS.deposit_en}
+${LANG==="ar" ? "بيانات بنكك" : "Bankak account"}: ${SETTINGS.bankak_account} — ${(LANG==="ar") ? SETTINGS.bankak_name_ar : SETTINGS.bankak_name_en}
+
+${LANG==="ar" ? "ملاحظة: الرجاء إرسال رقم العملية وصورة الإيصال بعد الدفع." : "Note: Please send the transaction ID and receipt image after payment."}`;
+
+    openWhatsApp(msg);
+  });
+});
+</script>
 </body>
-      </html>
+                                                               </html>
