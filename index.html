@@ -6,11 +6,6 @@
   <title>مطعم سماحة السياحي | samaha-restaurant</title>
   <meta name="description" content="مطعم سماحة السياحي - بربر - منيو كامل - طلبات واتساب - حجز طاولات - دفع بنكك" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="مطعم سماحة السياحي" />
-  <meta property="og:description" content="وجبات سمحة سماحة يبقى مطعم سماحة" />
-  <meta property="og:type" content="website" />
-
   <style>
     :root{
       --wood:#8b5a2b;
@@ -46,7 +41,6 @@
       border-radius:999px; background:#fff;
     }
 
-    /* Header */
     header{
       position:sticky; top:0; z-index:50;
       background: linear-gradient(90deg, var(--wood), var(--wood2));
@@ -81,20 +75,14 @@
       font-weight:800;
     }
     .navlinks a:hover{background: rgba(255,255,255,.14)}
-    .actions{
-      display:flex; align-items:center; gap:8px;
-    }
+    .actions{display:flex; align-items:center; gap:8px}
     .langbtn{
       border:none; cursor:pointer;
       padding:10px 12px; border-radius:12px;
       background:#fff; color:#111; font-weight:900;
     }
 
-    /* Hero */
-    .hero{
-      border-bottom:1px solid var(--line);
-      padding: 18px 0 18px;
-    }
+    .hero{border-bottom:1px solid var(--line); padding: 18px 0 18px}
     .hero-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -121,9 +109,7 @@
       display:flex; flex-direction:column; gap:12px;
       padding:16px;
     }
-    .cover-top{
-      display:flex; align-items:center; gap:12px;
-    }
+    .cover-top{display:flex; align-items:center; gap:12px}
     .cover-top img{
       width:88px; height:88px; border-radius:18px;
       border:1px solid var(--line);
@@ -168,10 +154,7 @@
     .section-head h3{margin:0; font-size:22px}
     .section-head p{margin:0}
 
-    /* Menu */
-    .tabs{
-      display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;
-    }
+    .tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px}
     .tab{
       border:1px solid var(--line);
       background:#fff;
@@ -220,7 +203,6 @@
       white-space:nowrap;
     }
 
-    /* Cart + forms */
     .panel{
       background:#fff;
       border:1px solid var(--line);
@@ -251,10 +233,7 @@
       text-align:start;
       line-height:1.7;
     }
-    .cartlist{
-      display:grid; gap:8px;
-      margin-top:10px;
-    }
+    .cartlist{display:grid; gap:8px; margin-top:10px}
     .cartitem{
       display:flex; align-items:center; justify-content:space-between; gap:8px;
       padding:10px 12px;
@@ -281,7 +260,6 @@
       font-weight:900;
     }
 
-    /* Location + socials */
     .two-col{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -307,7 +285,6 @@
       font-weight:900;
     }
 
-    /* Reviews */
     .reviews{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -324,7 +301,6 @@
     }
     .stars{color:#b37a00; font-weight:900}
 
-    /* Footer */
     footer{
       background:#141414;
       color:#fff;
@@ -340,7 +316,6 @@
     .footergrid a{color:#fff; text-decoration:underline}
     .legal{font-size:13px; opacity:.92; line-height:1.8}
 
-    /* Floating fixed buttons */
     .floatbar{
       position:fixed;
       bottom: 12px;
@@ -377,7 +352,7 @@
 <header>
   <div class="container nav">
     <div class="brand">
-      <!-- IMPORTANT: upload your logo as: logo.png.jpg (same folder as index.html) -->
+      <!-- upload logo as: logo.png.jpg -->
       <img src="logo.png.jpg" alt="Samaha Logo" />
       <div>
         <h1 id="brandName">مطعم سماحة السياحي</h1>
@@ -400,7 +375,6 @@
 </header>
 
 <main>
-
   <section class="hero" id="home">
     <div class="container hero-grid">
       <div class="cover">
@@ -476,8 +450,8 @@
           🛒 <span data-i18n="go_order">اذهب للطلب الآن</span>
         </a>
 
-        <div class="small muted" style="margin-top:10px" data-i18n="note_images">
-          * الصور أسلوب عالمي (للتحسين البصري) وقد تكون توضيحية.
+        <div class="small muted" style="margin-top:10px">
+          * <span data-i18n="note_images">الصور داخلية (مضمونة) لتجنب مشاكل الشبكات.</span>
         </div>
       </div>
     </div>
@@ -751,7 +725,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -817,146 +790,197 @@ function waLink(text){
 }
 
 /* =========================
-   IMAGES FIX (stable source)
-   Using loremflickr (more reliable than source.unsplash in some networks)
+   ✅ FINAL FIX: Internal SVG Images (no external sources)
    ========================= */
-function img(q, sig){
-  return "https://loremflickr.com/800/600/" + encodeURIComponent("food " + q) + "?lock=" + sig;
+function escapeXml(str){
+  return String(str)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#39;");
+}
+
+function imgSVG(label, sig){
+  const safe = String(label || "Food").slice(0, 44);
+  const k = safe.toLowerCase();
+
+  let emoji = "🍽️";
+  if (k.includes("pizza")) emoji = "🍕";
+  else if (k.includes("burger") || k.includes("بيرقر") || k.includes("برجر")) emoji = "🍔";
+  else if (k.includes("shawarma") || k.includes("شاورما")) emoji = "🌯";
+  else if (k.includes("falafel") || k.includes("طعمية")) emoji = "🧆";
+  else if (k.includes("fries") || k.includes("chips") || k.includes("شيبس") || k.includes("بطاطس")) emoji = "🍟";
+  else if (k.includes("chicken") || k.includes("broast") || k.includes("فراخ") || k.includes("بروست")) emoji = "🍗";
+  else if (k.includes("juice") || k.includes("milkshake") || k.includes("عصير") || k.includes("حليب") || k.includes("فراولة") || k.includes("منقة") || k.includes("برتقال")) emoji = "🥤";
+  else if (k.includes("ice cream") || k.includes("ايسكريم") || k.includes("آيسكريم") || k.includes("oreo") || k.includes("لوتس") || k.includes("فانيليا")) emoji = "🍨";
+  else if (k.includes("calzone") || k.includes("كلزوني") || k.includes("فطائر") || k.includes("pastry")) emoji = "🥐";
+  else if (k.includes("agashi") || k.includes("اقاشي") || k.includes("kebab")) emoji = "🥩";
+  else if (k.includes("hot dog") || k.includes("هوت دوغ")) emoji = "🌭";
+
+  const palettes = [
+    ["#8b5a2b","#f9a825","#c62828"],
+    ["#6f4522","#ffd54f","#d32f2f"],
+    ["#7a4a21","#ffca28","#b71c1c"],
+    ["#5d3a1a","#ffe082","#c62828"],
+    ["#8e5a2c","#ffb300","#ad1457"]
+  ];
+  const p = palettes[Math.abs(sig)%palettes.length];
+
+  const svg =
+`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${p[0]}"/>
+      <stop offset="0.55" stop-color="${p[1]}"/>
+      <stop offset="1" stop-color="${p[2]}"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#g)"/>
+  <circle cx="680" cy="80" r="92" fill="rgba(255,255,255,0.18)"/>
+  <circle cx="110" cy="520" r="150" fill="rgba(255,255,255,0.12)"/>
+  <rect x="70" y="110" width="660" height="380" rx="34" fill="rgba(255,255,255,0.20)" />
+
+  <g filter="url(#s)">
+    <rect x="120" y="170" width="560" height="260" rx="28" fill="rgba(255,255,255,0.94)"/>
+  </g>
+
+  <text x="400" y="280" font-size="96" text-anchor="middle" dominant-baseline="middle">${emoji}</text>
+  <text x="400" y="360" font-size="34" font-family="Tahoma, Arial" text-anchor="middle" fill="#111" font-weight="900">
+    ${escapeXml(safe)}
+  </text>
+  <text x="400" y="410" font-size="18" font-family="Tahoma, Arial" text-anchor="middle" fill="rgba(0,0,0,0.55)">
+    Samaha Restaurant • Menu Image
+  </text>
+</svg>`;
+
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
 }
 
 /* =========================
-   MENU DATA
+   MENU DATA (FULL)
+   Each item has: ar, en, price_ar, price_en, img_label, sig
    ========================= */
 const MENU = [
-  {
-    key:"juices",
-    title_ar:"عصائر",
-    title_en:"Juices",
+  { key:"juices", title_ar:"عصائر", title_en:"Juices",
     items:[
-      {ar:"فراولة", en:"Strawberry", price_ar:"4000 ج", price_en:"4000 SDG", img: img("strawberry juice", 1)},
-      {ar:"فراولة بالحليب", en:"Strawberry Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img: img("strawberry milkshake", 2)},
-      {ar:"منقة", en:"Mango Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango juice", 3)},
-      {ar:"موز بالحليب", en:"Banana Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img: img("banana milkshake", 4)},
-      {ar:"أناناس بالحليب", en:"Pineapple Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img: img("pineapple milkshake", 5)},
-      {ar:"برتقال", en:"Orange Juice", price_ar:"2000 ج", price_en:"2000 SDG", img: img("orange juice", 6)},
-      {ar:"قريب فروت", en:"Grapefruit Juice", price_ar:"2500 ج", price_en:"2500 SDG", img: img("grapefruit juice", 7)},
-      {ar:"تفاح", en:"Apple Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple juice", 8)},
-      {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img: img("apple milkshake", 9)},
-      {ar:"مشكل", en:"Mixed Juice", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mixed juice", 10)},
-      {ar:"منقة بالاوريو", en:"Mango Oreo", price_ar:"4000 ج", price_en:"4000 SDG", img: img("mango oreo", 11)},
-      {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("special smoothie", 12)}
+      {ar:"فراولة", en:"Strawberry", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Strawberry Juice", sig:1},
+      {ar:"فراولة بالحليب", en:"Strawberry Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Strawberry Milkshake", sig:2},
+      {ar:"منقة", en:"Mango Juice", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Mango Juice", sig:3},
+      {ar:"موز بالحليب", en:"Banana Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Banana Milkshake", sig:4},
+      {ar:"أناناس بالحليب", en:"Pineapple Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Pineapple Milkshake", sig:5},
+      {ar:"برتقال", en:"Orange Juice", price_ar:"2000 ج", price_en:"2000 SDG", img_label:"Orange Juice", sig:6},
+      {ar:"قريب فروت", en:"Grapefruit Juice", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Grapefruit Juice", sig:7},
+      {ar:"تفاح", en:"Apple Juice", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Apple Juice", sig:8},
+      {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Apple Milkshake", sig:9},
+      {ar:"مشكل", en:"Mixed Juice", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Mixed Juice", sig:10},
+      {ar:"منقة بالاوريو", en:"Mango Oreo", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Mango Oreo", sig:11},
+      {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Special Smoothie", sig:12}
     ]
   },
-  {
-    key:"icecream",
-    title_ar:"آيسكريم (أحجام)",
-    title_en:"Ice Cream (Sizes)",
+
+  { key:"icecream", title_ar:"آيسكريم (أحجام)", title_en:"Ice Cream (Sizes)",
     items:(()=>{
       const flavors = [
-        {ar:"كاكاو", en:"Cocoa"}, {ar:"أوريو", en:"Oreo"}, {ar:"لوتس", en:"Lotus"},
-        {ar:"فراولة", en:"Strawberry"}, {ar:"كرز", en:"Cherry"}, {ar:"توت", en:"Berry"},
-        {ar:"كيوي", en:"Kiwi"}, {ar:"بطيخ", en:"Watermelon"}, {ar:"مشكل", en:"Mixed"},
-        {ar:"كرميل", en:"Caramel"}, {ar:"ليمون", en:"Lemon"}, {ar:"فانيليا", en:"Vanilla"}
+        ["كاكاو","Cocoa"],["أوريو","Oreo"],["لوتس","Lotus"],["فراولة","Strawberry"],["كرز","Cherry"],["توت","Berry"],
+        ["كيوي","Kiwi"],["بطيخ","Watermelon"],["مشكل","Mixed"],["كرميل","Caramel"],["ليمون","Lemon"],["فانيليا","Vanilla"]
       ];
       const sizes = [
-        {ar:"صغير", en:"Small", price_ar:"3000 ج", price_en:"3000 SDG"},
-        {ar:"وسط", en:"Medium", price_ar:"5000 ج", price_en:"5000 SDG"},
-        {ar:"كبير", en:"Large", price_ar:"7000 ج", price_en:"7000 SDG"}
+        ["صغير","Small","3000 ج","3000 SDG"],
+        ["وسط","Medium","5000 ج","5000 SDG"],
+        ["كبير","Large","7000 ج","7000 SDG"]
       ];
-      const out = [];
-      let sig = 30;
+      let sig=30;
+      const out=[];
       for(const f of flavors){
         for(const s of sizes){
           out.push({
-            ar:`آيسكريم ${f.ar} (${s.ar})`,
-            en:`${f.en} Ice Cream (${s.en})`,
-            price_ar:s.price_ar,
-            price_en:s.price_en,
-            img: img(`${f.en} ice cream`, sig++)
+            ar:`آيسكريم ${f[0]} (${s[0]})`,
+            en:`${f[1]} Ice Cream (${s[1]})`,
+            price_ar:s[2],
+            price_en:s[3],
+            img_label:`${f[1]} Ice Cream`,
+            sig:sig++
           });
         }
       }
       return out;
     })()
   },
-  {
-    key:"orders",
-    title_ar:"طلبات",
-    title_en:"Orders",
+
+  { key:"orders", title_ar:"طلبات", title_en:"Orders",
     items:[
-      {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"8000 ج", price_en:"8000 SDG", img: img("grilled skewers", 70)},
-      {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"35,000 ج", price_en:"35,000 SDG", img: img("grilled chicken", 71)},
-      {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"17,500 ج", price_en:"17,500 SDG", img: img("half grilled chicken", 72)},
-      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img: img("fries", 73)},
-      {ar:"بروست 4 قطع", en:"Broast 4 pcs", price_ar:"24,000 ج", price_en:"24,000 SDG", img: img("fried chicken", 74)},
-      {ar:"بروست 8 قطع", en:"Broast 8 pcs", price_ar:"48,000 ج", price_en:"48,000 SDG", img: img("fried chicken bucket", 75)},
-      {ar:"بروست 12 قطعة", en:"Broast 12 pcs", price_ar:"72,000 ج", price_en:"72,000 SDG", img: img("fried chicken platter", 76)},
-      {ar:"طلب كرسبي", en:"Crispy Order", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("crispy chicken", 77)}
+      {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Agashi Skewers", sig:70},
+      {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"35,000 ج", price_en:"35,000 SDG", img_label:"Whole Chicken", sig:71},
+      {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"17,500 ج", price_en:"17,500 SDG", img_label:"Half Chicken", sig:72},
+      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Fries", sig:73},
+      {ar:"بروست 4 قطع", en:"Broast 4 pcs", price_ar:"24,000 ج", price_en:"24,000 SDG", img_label:"Fried Chicken", sig:74},
+      {ar:"بروست 8 قطع", en:"Broast 8 pcs", price_ar:"48,000 ج", price_en:"48,000 SDG", img_label:"Fried Chicken Bucket", sig:75},
+      {ar:"بروست 12 قطعة", en:"Broast 12 pcs", price_ar:"72,000 ج", price_en:"72,000 SDG", img_label:"Fried Chicken Platter", sig:76},
+      {ar:"طلب كرسبي", en:"Crispy Order", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Crispy Chicken", sig:77}
     ]
   },
-  {
-    key:"sandwiches",
-    title_ar:"سندوتشات (فطيرة / عيش)",
-    title_en:"Sandwiches (Pita / Bread)",
+
+  { key:"sandwiches", title_ar:"السندوتشات (فطيرة / عيش)", title_en:"Sandwiches (Pita / Bread)",
     items:[
-      {ar:"صاروخ سماحة (فطيرة/عيش)", en:"Samaha Rocket (Pita/Bread)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("shawarma sandwich", 90)},
-      {ar:"بيرقر عادي (فطيرة/عيش)", en:"Burger Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("burger", 91)},
-      {ar:"بيرقر جامبو (فطيرة/عيش)", en:"Burger Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("double burger", 92)},
-      {ar:"هوت دوغ عادي (فطيرة/عيش)", en:"Hot Dog Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img: img("hot dog", 93)},
-      {ar:"هوت دوغ جامبو (فطيرة/عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img: img("hot dog jumbo", 94)},
-      {ar:"كرسبي (فطيرة/عيش)", en:"Crispy (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("crispy chicken sandwich", 95)},
-      {ar:"شاورما (فطيرة/عيش)", en:"Shawarma (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("shawarma wrap", 96)},
-      {ar:"اقاشي عادي (فطيرة/عيش)", en:"Agashi Regular (Pita/Bread)", price_ar:"4000 ج", price_en:"4000 SDG", img: img("kebab sandwich", 97)},
-      {ar:"اقاشي جامبو (فطيرة/عيش)", en:"Agashi Jumbo (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img: img("kebab wrap", 98)},
-      {ar:"طعمية (فطيرة/عيش)", en:"Falafel (Pita/Bread)", price_ar:"1500 ج", price_en:"1500 SDG", img: img("falafel sandwich", 99)},
-      {ar:"شيبس (فطيرة/عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("fries wrap", 100)},
-      {ar:"طعمية & شيبس (فطيرة/عيش)", en:"Falafel & Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img: img("falafel fries wrap", 101)}
+      {ar:"صاروخ سماحة (فطيرة / عيش)", en:"Samaha Rocket (Pita/Bread)", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Samaha Rocket Sandwich", sig:90},
+      {ar:"بيرقر عادي (فطيرة / عيش)", en:"Burger Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Burger", sig:91},
+      {ar:"بيرقر جامبو (فطيرة / عيش)", en:"Burger Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Jumbo Burger", sig:92},
+      {ar:"هوت دوغ عادي (فطيرة / عيش)", en:"Hot Dog Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Hot Dog", sig:93},
+      {ar:"هوت دوغ جامبو (فطيرة / عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Hot Dog Jumbo", sig:94},
+      {ar:"كرسبي (فطيرة / عيش)", en:"Crispy (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Crispy Sandwich", sig:95},
+      {ar:"شاورما (فطيرة / عيش)", en:"Shawarma (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Shawarma", sig:96},
+      {ar:"اقاشي عادي (فطيرة / عيش)", en:"Agashi Regular (Pita/Bread)", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Agashi Sandwich", sig:97},
+      {ar:"اقاشي جامبو (فطيرة / عيش)", en:"Agashi Jumbo (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Agashi Jumbo", sig:98},
+      {ar:"طعمية (فطيرة / عيش)", en:"Falafel (Pita/Bread)", price_ar:"1500 ج", price_en:"1500 SDG", img_label:"Falafel", sig:99},
+      {ar:"شيبس (فطيرة / عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Chips Sandwich", sig:100},
+      {ar:"طعمية & شيبس (فطيرة / عيش)", en:"Falafel & Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Falafel & Chips", sig:101}
     ]
   },
-  {
-    key:"pizza",
-    title_ar:"بيتزا",
-    title_en:"Pizza",
+
+  { key:"pizza", title_ar:"بيتزا", title_en:"Pizza",
     items:[
-      {ar:"بيتزا هوت دوغ (صغيرة)", en:"Hot Dog Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("hot dog pizza", 120)},
-      {ar:"بيتزا هوت دوغ (وسط)", en:"Hot Dog Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("hot dog pizza", 121)},
-      {ar:"بيتزا هوت دوغ (كبيرة)", en:"Hot Dog Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("hot dog pizza", 122)},
-      {ar:"بيتزا هوت دوغ (عائلية)", en:"Hot Dog Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img: img("hot dog pizza", 123)},
+      {ar:"بيتزا هوت دوغ صغيرة", en:"Hot Dog Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Hot Dog Pizza", sig:120},
+      {ar:"بيتزا هوت دوغ وسط", en:"Hot Dog Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Hot Dog Pizza", sig:121},
+      {ar:"بيتزا هوت دوغ كبيرة", en:"Hot Dog Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img_label:"Hot Dog Pizza", sig:122},
+      {ar:"بيتزا هوت دوغ عائلية", en:"Hot Dog Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img_label:"Hot Dog Pizza", sig:123},
 
-      {ar:"بيتزا فراخ (صغيرة)", en:"Chicken Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img: img("chicken pizza", 124)},
-      {ar:"بيتزا فراخ (وسط)", en:"Chicken Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("chicken pizza", 125)},
-      {ar:"بيتزا فراخ (كبيرة)", en:"Chicken Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("chicken pizza", 126)},
-      {ar:"بيتزا فراخ (عائلية)", en:"Chicken Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img: img("chicken pizza", 127)},
+      {ar:"بيتزا فراخ صغيرة", en:"Chicken Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Chicken Pizza", sig:124},
+      {ar:"بيتزا فراخ وسط", en:"Chicken Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Chicken Pizza", sig:125},
+      {ar:"بيتزا فراخ كبيرة", en:"Chicken Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img_label:"Chicken Pizza", sig:126},
+      {ar:"بيتزا فراخ عائلية", en:"Chicken Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img_label:"Chicken Pizza", sig:127},
 
-      {ar:"بيتزا خضار (صغيرة)", en:"Veggie Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("vegetable pizza", 128)},
-      {ar:"بيتزا خضار (وسط)", en:"Veggie Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img: img("vegetable pizza", 129)},
-      {ar:"بيتزا خضار (كبيرة)", en:"Veggie Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("vegetable pizza", 130)},
-      {ar:"بيتزا خضار (عائلية)", en:"Veggie Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("vegetable pizza", 131)},
+      {ar:"بيتزا خضار صغيرة", en:"Veggie Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Veggie Pizza", sig:128},
+      {ar:"بيتزا خضار وسط", en:"Veggie Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img_label:"Veggie Pizza", sig:129},
+      {ar:"بيتزا خضار كبيرة", en:"Veggie Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img_label:"Veggie Pizza", sig:130},
+      {ar:"بيتزا خضار عائلية", en:"Veggie Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Veggie Pizza", sig:131},
 
-      {ar:"بيتزا جبنة (صغيرة)", en:"Cheese Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("cheese pizza", 132)},
-      {ar:"بيتزا جبنة (وسط)", en:"Cheese Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img: img("cheese pizza", 133)},
-      {ar:"بيتزا جبنة (كبيرة)", en:"Cheese Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("cheese pizza", 134)},
-      {ar:"بيتزا جبنة (عائلية)", en:"Cheese Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("cheese pizza", 135)},
+      {ar:"بيتزا جبنة صغيرة", en:"Cheese Pizza (Small)", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Cheese Pizza", sig:132},
+      {ar:"بيتزا جبنة وسط", en:"Cheese Pizza (Medium)", price_ar:"15,000 ج", price_en:"15,000 SDG", img_label:"Cheese Pizza", sig:133},
+      {ar:"بيتزا جبنة كبيرة", en:"Cheese Pizza (Large)", price_ar:"18,000 ج", price_en:"18,000 SDG", img_label:"Cheese Pizza", sig:134},
+      {ar:"بيتزا جبنة عائلية", en:"Cheese Pizza (Family)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Cheese Pizza", sig:135},
 
-      {ar:"بيتزا مشكل (صغيرة)", en:"Mixed Pizza (Small)", price_ar:"14,000 ج", price_en:"14,000 SDG", img: img("mixed pizza", 136)},
-      {ar:"بيتزا مشكل (وسط)", en:"Mixed Pizza (Medium)", price_ar:"19,000 ج", price_en:"19,000 SDG", img: img("mixed pizza", 137)},
-      {ar:"بيتزا مشكل (كبيرة)", en:"Mixed Pizza (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img: img("mixed pizza", 138)},
-      {ar:"بيتزا مشكل (عائلية)", en:"Mixed Pizza (Family)", price_ar:"27,000 ج", price_en:"27,000 SDG", img: img("mixed pizza", 139)},
+      {ar:"بيتزا مشكل صغيرة", en:"Mixed Pizza (Small)", price_ar:"14,000 ج", price_en:"14,000 SDG", img_label:"Mixed Pizza", sig:136},
+      {ar:"بيتزا مشكل وسط", en:"Mixed Pizza (Medium)", price_ar:"19,000 ج", price_en:"19,000 SDG", img_label:"Mixed Pizza", sig:137},
+      {ar:"بيتزا مشكل كبيرة", en:"Mixed Pizza (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Mixed Pizza", sig:138},
+      {ar:"بيتزا مشكل عائلية", en:"Mixed Pizza (Family)", price_ar:"27,000 ج", price_en:"27,000 SDG", img_label:"Mixed Pizza", sig:139},
 
-      {ar:"بيتزا أطراف جبن", en:"Cheese Stuffed Crust Pizza", price_ar:"28,000 ج", price_en:"28,000 SDG", img: img("stuffed crust pizza", 140)}
+      {ar:"بيتزا أطراف جبن", en:"Cheese Stuffed Crust Pizza", price_ar:"28,000 ج", price_en:"28,000 SDG", img_label:"Stuffed Crust Pizza", sig:140}
     ]
   },
-  {
-    key:"pastries",
-    title_ar:"فطائر",
-    title_en:"Pastries",
+
+  { key:"pastries", title_ar:"الفطائر", title_en:"Pastries",
     items:[
-      {ar:"فطائر مصرية حلوة (وسط)", en:"Egyptian Sweet Pastry (Medium)", price_ar:"18,000 ج", price_en:"18,000 SDG", img: img("sweet pastry", 160)},
-      {ar:"فطائر مصرية حلوة (كبيرة)", en:"Egyptian Sweet Pastry (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img: img("sweet pastry", 161)},
-      {ar:"فطائر مصرية مالحة (وسط)", en:"Egyptian Savory Pastry (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img: img("savory pastry", 162)},
-      {ar:"فطائر مصرية مالحة (كبيرة)", en:"Egyptian Savory Pastry (Large)", price_ar:"19,000 ج", price_en:"19,000 SDG", img: img("savory pastry", 163)},
-      {ar:"فطائر شامية", en:"Shami Pastry", price_ar:"7000 ج", price_en:"7000 SDG", img: img("middle eastern pastry", 164)},
-      {ar:"كلزوني", en:"Calzone", price_ar:"10,000 ج", price_en:"10,000 SDG", img: img("calzone", 165)}
+      {ar:"فطائر مصرية حلوه وسط", en:"Egyptian Sweet Pastry (Medium)", price_ar:"18,000 ج", price_en:"18,000 SDG", img_label:"Sweet Pastry", sig:160},
+      {ar:"فطائر مصرية حلوه كبيرة", en:"Egyptian Sweet Pastry (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img_label:"Sweet Pastry", sig:161},
+      {ar:"فطائر مصرية مالحة وسط", en:"Egyptian Savory Pastry (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Savory Pastry", sig:162},
+      {ar:"فطائر مصرية مالحة كبيرة", en:"Egyptian Savory Pastry (Large)", price_ar:"19,000 ج", price_en:"19,000 SDG", img_label:"Savory Pastry", sig:163},
+      {ar:"فطائر شامية", en:"Shami Pastry", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Shami Pastry", sig:164},
+      {ar:"كلزوني", en:"Calzone", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Calzone", sig:165}
     ]
   }
 ];
@@ -965,7 +989,6 @@ const MENU = [
    i18n
    ========================= */
 let LANG = "ar";
-
 const I18N = {
   ar: {
     nav_menu:"المنيو", nav_order:"اطلب", nav_reserve:"حجز", nav_location:"الموقع", nav_about:"عنّا",
@@ -977,7 +1000,7 @@ const I18N = {
     bank_title:"بيانات بنكك:", cancel_title:"سياسة الإلغاء:", cancel_text:"يمكن إلغاء الطلب خلال أول 10 دقائق فقط من الطلب.",
     quick_title:"طلب سريع", quick_note:"اختر الأصناف من المنيو واضغط “أضف” ثم أرسل الطلب عبر واتساب.",
     cart:"السلة", go_order:"اذهب للطلب الآن",
-    note_images:"* الصور أسلوب عالمي (للتحسين البصري) وقد تكون توضيحية.",
+    note_images:"الصور داخلية (مضمونة) لتجنب مشاكل الشبكات.",
     delivery_fee:"رسوم التوصيل", delivery_fee_value:"حسب المنطقة",
     seating:"الجلسات", seating_value:"جلسات عائلية وجميع أنواع الجلسات",
     menu_title:"المنيو", menu_sub:"اختر القسم واضف الأصناف للسلة", to_order:"إلى الطلب",
@@ -1029,7 +1052,7 @@ const I18N = {
     bank_title:"Bankak details:", cancel_title:"Cancellation:", cancel_text:"Orders can be cancelled within the first 10 minutes only.",
     quick_title:"Quick Order", quick_note:"Pick items and tap “Add”, then send your order on WhatsApp.",
     cart:"Cart", go_order:"Go to Order Now",
-    note_images:"* Global-style images (for visuals) may be illustrative.",
+    note_images:"Images are built-in (guaranteed) to avoid network blocking.",
     delivery_fee:"Delivery fee", delivery_fee_value:"Depends on area",
     seating:"Seating", seating_value:"Family seating and all seating types available",
     menu_title:"Menu", menu_sub:"Choose a category and add items to cart", to_order:"Go to Order",
@@ -1079,7 +1102,6 @@ function t(k){ return (I18N[LANG] && I18N[LANG][k]) ? I18N[LANG][k] : k; }
    Cart
    ========================= */
 const CART = [];
-
 function addToCart(menuItem){
   const name = (LANG==="ar") ? menuItem.ar : menuItem.en;
   const price = (LANG==="ar") ? menuItem.price_ar : menuItem.price_en;
@@ -1089,7 +1111,6 @@ function addToCart(menuItem){
   else CART.push({name, price, qty: 1});
   renderCart();
 }
-
 function decQty(idx){
   if(!CART[idx]) return;
   CART[idx].qty -= 1;
@@ -1112,7 +1133,6 @@ function clearCart(){
 function cartCount(){
   return CART.reduce((s,x)=>s + x.qty, 0);
 }
-
 function renderCart(){
   document.getElementById("cartCount").textContent = cartCount();
   document.getElementById("cartCount2").textContent = cartCount();
@@ -1185,7 +1205,9 @@ function renderMenu(){
     const card = document.createElement("div");
     card.className = "item";
     card.innerHTML = `
-      <div class="imgwrap"><img src="${it.img}" alt="${name}" loading="lazy"></div>
+      <div class="imgwrap">
+        <img src="${imgSVG(it.img_label || name, it.sig || 1)}" alt="${name}" loading="lazy">
+      </div>
       <div class="info">
         <h4>${name}</h4>
         <div class="row">
@@ -1238,7 +1260,6 @@ function applyLang(){
 function openWhatsApp(message){
   window.open(waLink(message), "_blank", "noopener");
 }
-
 function buildCartLines(){
   if(CART.length === 0){
     return (LANG==="ar") ? "— (لا توجد أصناف في السلة)" : "— (No items in cart)";
@@ -1348,4 +1369,4 @@ ${LANG==="ar" ? "ملاحظة: الرجاء إرسال رقم العملية و�
 });
 </script>
 </body>
-                                                  </html>
+  </html>
