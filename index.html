@@ -877,178 +877,106 @@ function imgSVG(label, sig){
    ========================= */
 const UNAV_AR = "غير متوفر حاليا";
 const UNAV_EN = "Not available now";
-
 const MENU = [
   /* ====== عصائر ====== */
   { key:"juices", title_ar:"عصائر", title_en:"Juices",
     items:[
       {ar:"جوافة", en:"Guava", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Guava Juice", sig:1},
-      {ar:"فراولة", en:"Strawberry", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Strawberry Juice", sig:2},
-      {ar:"فراولة بالحليب", en:"Strawberry Milkshake", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Strawberry Milkshake", sig:3},
-      {ar:"منقة", en:"Mango Juice", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Mango Juice", sig:4},
-      {ar:"منقة بالحليب", en:"Mango Milkshake", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Mango Milkshake", sig:5},
-      {ar:"موز بالحليب", en:"Banana Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Banana Milkshake", sig:6},
-      {ar:"اناناس بالحليب", en:"Pineapple Milkshake", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Pineapple Milkshake", sig:7},
-      {ar:"برتقال", en:"Orange Juice", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Orange Juice", sig:8},
-      {ar:"قريب فروت", en:"Grapefruit Juice", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Grapefruit Juice", sig:9},
-      {ar:"تفاح", en:"Apple Juice", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Apple Juice", sig:10},
-      {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Apple Milkshake", sig:11},
-      {ar:"مشكل", en:"Mixed Juice", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Mixed Juice", sig:12},
-      {ar:"منقة بالأوريو", en:"Mango Oreo", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mango Oreo", sig:13},
-      {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"9000 ج", price_en:"9000 SDG", img_label:"Special Smoothie", sig:14}
+      {ar:"فراولة", en:"Strawberry", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Strawberry Juice", sig:2},
+      {ar:"فراولة بالحليب", en:"Strawberry Milkshake", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Strawberry Milkshake", sig:3},
+      {ar:"منقة", en:"Mango Juice", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mango Juice", sig:4},
+      {ar:"منقة بالحليب", en:"Mango Milkshake", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mango Milkshake", sig:5},
+      {ar:"موز بالحليب", en:"Banana Milkshake", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Banana Milkshake", sig:6},
+      {ar:"اناناس بالحليب", en:"Pineapple Milkshake", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Pineapple Milkshake", sig:7},
+      {ar:"برتقال", en:"Orange Juice", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Orange Juice", sig:8},
+      {ar:"قريب فروت", en:"Grapefruit Juice", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Grapefruit Juice", sig:9},
+      {ar:"تفاح", en:"Apple Juice", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Apple Juice", sig:10},
+      {ar:"تفاح بالحليب", en:"Apple Milkshake", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Apple Milkshake", sig:11},
+      {ar:"مشكل", en:"Mixed Juice", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mixed Juice", sig:12},
+      {ar:"منقة بالأوريو", en:"Mango Oreo", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Mango Oreo", sig:13},
+      {ar:"عرائيسي", en:"Araisi (Special)", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Special Smoothie", sig:14},
+      {ar:"سلطة فواكه صغيرة", en:"Fruit Salad (Small)", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Fruit Salad", sig:15},
+      {ar:"سلطة فواكه كبيرة", en:"Fruit Salad (Large)", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Fruit Salad", sig:16},
+      {ar:"موهيتو", en:"Mojito", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mojito", sig:17}
     ]
   },
 
-  /* ====== آيسكريم (حسب الصورة: أسعار مختلفة لكل نكهة) ====== */
-  { key:"icecream", title_ar:"آيسكريم (أحجام)", title_en:"Ice Cream (Sizes)",
+  /* ====== آيسكريم (سعر موحد حسب الحجم لجميع النكهات) ====== */
+  { key:"icecream", title_ar:"آيسكريم", title_en:"Ice Cream",
     items:[
-      /* كاكاو */
-      {ar:"آيسكريم كاكاو (صغير)", en:"Cocoa Ice Cream (Small)", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Cocoa Ice Cream", sig:30},
-      {ar:"آيسكريم كاكاو (وسط)", en:"Cocoa Ice Cream (Medium)", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Cocoa Ice Cream", sig:31},
-      {ar:"آيسكريم كاكاو (كبير)", en:"Cocoa Ice Cream (Large)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Cocoa Ice Cream", sig:32},
-
-      /* أوريو */
-      {ar:"آيسكريم أوريو (صغير)", en:"Oreo Ice Cream (Small)", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Oreo Ice Cream", sig:33},
-      {ar:"آيسكريم أوريو (وسط)", en:"Oreo Ice Cream (Medium)", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Oreo Ice Cream", sig:34},
-      {ar:"آيسكريم أوريو (كبير)", en:"Oreo Ice Cream (Large)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Oreo Ice Cream", sig:35},
-
-      /* لوتس */
-      {ar:"آيسكريم لوتس (صغير)", en:"Lotus Ice Cream (Small)", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Lotus Ice Cream", sig:36},
-      {ar:"آيسكريم لوتس (وسط)", en:"Lotus Ice Cream (Medium)", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Lotus Ice Cream", sig:37},
-      {ar:"آيسكريم لوتس (كبير)", en:"Lotus Ice Cream (Large)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Lotus Ice Cream", sig:38},
-
-      /* فراولة */
-      {ar:"آيسكريم فراولة (صغير)", en:"Strawberry Ice Cream (Small)", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Strawberry Ice Cream", sig:39},
-      {ar:"آيسكريم فراولة (وسط)", en:"Strawberry Ice Cream (Medium)", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Strawberry Ice Cream", sig:40},
-      {ar:"آيسكريم فراولة (كبير)", en:"Strawberry Ice Cream (Large)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Strawberry Ice Cream", sig:41},
-
-      /* كرز */
-      {ar:"آيسكريم كرز (صغير)", en:"Cherry Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Cherry Ice Cream", sig:42},
-      {ar:"آيسكريم كرز (وسط)", en:"Cherry Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Cherry Ice Cream", sig:43},
-      {ar:"آيسكريم كرز (كبير)", en:"Cherry Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Cherry Ice Cream", sig:44},
-
-      /* توت */
-      {ar:"آيسكريم توت (صغير)", en:"Berry Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Berry Ice Cream", sig:45},
-      {ar:"آيسكريم توت (وسط)", en:"Berry Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Berry Ice Cream", sig:46},
-      {ar:"آيسكريم توت (كبير)", en:"Berry Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Berry Ice Cream", sig:47},
-
-      /* كيوي */
-      {ar:"آيسكريم كيوي (صغير)", en:"Kiwi Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Kiwi Ice Cream", sig:48},
-      {ar:"آيسكريم كيوي (وسط)", en:"Kiwi Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Kiwi Ice Cream", sig:49},
-      {ar:"آيسكريم كيوي (كبير)", en:"Kiwi Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Kiwi Ice Cream", sig:50},
-
-      /* بطيخ */
-      {ar:"آيسكريم بطيخ (صغير)", en:"Watermelon Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Watermelon Ice Cream", sig:51},
-      {ar:"آيسكريم بطيخ (وسط)", en:"Watermelon Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Watermelon Ice Cream", sig:52},
-      {ar:"آيسكريم بطيخ (كبير)", en:"Watermelon Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Watermelon Ice Cream", sig:53},
-
-      /* مشكل */
-      {ar:"آيسكريم مشكل (صغير)", en:"Mixed Ice Cream (Small)", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Mixed Ice Cream", sig:54},
-      {ar:"آيسكريم مشكل (وسط)", en:"Mixed Ice Cream (Medium)", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Mixed Ice Cream", sig:55},
-      {ar:"آيسكريم مشكل (كبير)", en:"Mixed Ice Cream (Large)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Mixed Ice Cream", sig:56},
-
-      /* كرميل */
-      {ar:"آيسكريم كرميل (صغير)", en:"Caramel Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Caramel Ice Cream", sig:57},
-      {ar:"آيسكريم كرميل (وسط)", en:"Caramel Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Caramel Ice Cream", sig:58},
-      {ar:"آيسكريم كرميل (كبير)", en:"Caramel Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Caramel Ice Cream", sig:59},
-
-      /* ليمون */
-      {ar:"آيسكريم ليمون (صغير)", en:"Lemon Ice Cream (Small)", price_ar:"3500 ج", price_en:"3500 SDG", img_label:"Lemon Ice Cream", sig:60},
-      {ar:"آيسكريم ليمون (وسط)", en:"Lemon Ice Cream (Medium)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Lemon Ice Cream", sig:61},
-      {ar:"آيسكريم ليمون (كبير)", en:"Lemon Ice Cream (Large)", price_ar:"7500 ج", price_en:"7500 SDG", img_label:"Lemon Ice Cream", sig:62},
-
-      /* فانيليا */
-      {ar:"آيسكريم فانيليا (صغير)", en:"Vanilla Ice Cream (Small)", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Vanilla Ice Cream", sig:63},
-      {ar:"آيسكريم فانيليا (وسط)", en:"Vanilla Ice Cream (Medium)", price_ar:"4500 ج", price_en:"4500 SDG", img_label:"Vanilla Ice Cream", sig:64},
-      {ar:"آيسكريم فانيليا (كبير)", en:"Vanilla Ice Cream (Large)", price_ar:"6500 ج", price_en:"6500 SDG", img_label:"Vanilla Ice Cream", sig:65}
+      {ar:"آيسكريم (صغير)", en:"Ice Cream (Small)", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Ice Cream", sig:30},
+      {ar:"آيسكريم (وسط)", en:"Ice Cream (Medium)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Ice Cream", sig:31},
+      {ar:"آيسكريم (كبير)", en:"Ice Cream (Large)", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Ice Cream", sig:32}
     ]
   },
 
   /* ====== طلبات ====== */
   { key:"orders", title_ar:"طلبات", title_en:"Orders",
     items:[
-      {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Agashi Skewers", sig:70},
-      {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"35,000 ج", price_en:"35,000 SDG", img_label:"Whole Chicken", sig:71},
-      {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"17,500 ج", price_en:"17,500 SDG", img_label:"Half Chicken", sig:72},
-      {ar:"طلب فراخ", en:"Chicken Order", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Chicken Order", sig:72.1},
-      {ar:"فرخة طلب", en:"Chicken (Order)", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Chicken", sig:72.2},
-      {ar:"طلب شيش", en:"Shish Order", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Shish", sig:72.3},
-      {ar:"طلب شيبس", en:"Chips Order", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Fries", sig:73},
-      {ar:"بروست 4 قطع", en:"Broast 4 pcs", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Broast", sig:74},
-      {ar:"بروست 8 قطع", en:"Broast 8 pcs", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Broast Bucket", sig:75},
-      {ar:"بروست 12 قطعة", en:"Broast 12 pcs", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Broast Platter", sig:76},
-      {ar:"طلب كرسبي", en:"Crispy Order", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Crispy Chicken", sig:77}
+      {ar:"طلب اقاشي", en:"Agashi Order", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Agashi Skewers", sig:70},
+      {ar:"فراخ كامل اقاشي", en:"Whole Chicken Agashi", price_ar:"45000 ج", price_en:"45000 SDG", img_label:"Whole Chicken", sig:71},
+      {ar:"فراخ نص اقاشي", en:"Half Chicken Agashi", price_ar:"20000 ج", price_en:"20000 SDG", img_label:"Half Chicken", sig:72},
+      {ar:"فراخ كامل مكنة", en:"Whole Chicken Makana", price_ar:"45000 ج", price_en:"45000 SDG", img_label:"Whole Chicken", sig:72.1},
+      {ar:"فراخ نص مكنة", en:"Half Chicken Makana", price_ar:"22500 ج", price_en:"22500 SDG", img_label:"Half Chicken", sig:72.2},
+      {ar:"فراخ مشكل", en:"Mixed Chicken", price_ar:"20000 ج", price_en:"20000 SDG", img_label:"Chicken Order", sig:72.3},
+      {ar:"طلب شيبس", en:"Chips Order", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Fries", sig:73},
+      {ar:"طلب كرسبي", en:"Crispy Order", price_ar:"15000 ج", price_en:"15000 SDG", img_label:"Crispy Chicken", sig:77}
     ]
   },
 
-  /* ====== السندوتشات ====== */
-  { key:"sandwiches", title_ar:"السندوتشات (فطيرة / عيش)", title_en:"Sandwiches (Pita / Bread)",
+  /* ====== السندوتشات ====== */{ key:"sandwiches", title_ar:"السندوتشات (فطيرة / عيش)", title_en:"Sandwiches (Pita / Bread)",
     items:[
-      {ar:"صاروخ سماحة (فطيرة / عيش)", en:"Samaha Rocket (Pita/Bread)", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Samaha Rocket Sandwich", sig:90},
-      {ar:"بيرقر عادي (فطيرة / عيش)", en:"Burger Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Burger", sig:91},
-      {ar:"بيرقر جامبو (فطيرة / عيش)", en:"Burger Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Jumbo Burger", sig:92},
-      /* ✅ تعديل رقم 4 */
-      {ar:"شيش طاووق (فطيرة / عيش)", en:"Shish Tawook (Pita/Bread)", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Shish Tawook", sig:93},
-
-      {ar:"هوت دوغ عادي (فطيرة / عيش)", en:"Hot Dog Regular (Pita/Bread)", price_ar:"5500 ج", price_en:"5500 SDG", img_label:"Hot Dog", sig:94},
-      {ar:"هوت دوغ جامبو (فطيرة / عيش)", en:"Hot Dog Jumbo (Pita/Bread)", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Hot Dog Jumbo", sig:95},
-      {ar:"كرسبي (فطيرة / عيش)", en:"Crispy (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Crispy Sandwich", sig:96},
-      {ar:"شاورما (فطيرة / عيش)", en:"Shawarma (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Shawarma", sig:97},
-      {ar:"اقاشي عادي (فطيرة / عيش)", en:"Agashi Regular (Pita/Bread)", price_ar:"4000 ج", price_en:"4000 SDG", img_label:"Agashi Sandwich", sig:98},
-      {ar:"اقاشي جامبو (فطيرة / عيش)", en:"Agashi Jumbo (Pita/Bread)", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Agashi Jumbo", sig:99},
-      {ar:"طعمية (فطيرة / عيش)", en:"Falafel (Pita/Bread)", price_ar:"1500 ج", price_en:"1500 SDG", img_label:"Falafel", sig:100},
-      {ar:"شيبس (فطيرة / عيش)", en:"Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Chips Sandwich", sig:101},
-      {ar:"طعمية شيبس (فطيرة / عيش)", en:"Falafel & Chips (Pita/Bread)", price_ar:"2500 ج", price_en:"2500 SDG", img_label:"Falafel & Chips", sig:102}
+      {ar:"صاروخ سماحة", en:"Samaha Rocket", price_ar:"15000 ج", price_en:"15000 SDG", img_label:"Samaha Rocket Sandwich", sig:90},
+      {ar:"بيرقر عادي", en:"Burger Regular", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Burger", sig:91},
+      {ar:"بيرقر جامبو", en:"Burger Jumbo", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Jumbo Burger", sig:92},
+      {ar:"شيش طاووق (فطيرة)", en:"Shish Tawook (Pita)", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Shish Tawook", sig:93},
+      {ar:"شيش طاووق (عيش)", en:"Shish Tawook (Bread)", price_ar:"12000 ج", price_en:"12000 SDG", img_label:"Shish Tawook", sig:93.1},
+      {ar:"هوت دوغ عادي", en:"Hot Dog Regular", price_ar:"6000 ج", price_en:"6000 SDG", img_label:"Hot Dog", sig:94},
+      {ar:"هوت دوغ جامبو", en:"Hot Dog Jumbo", price_ar:"8000 ج", price_en:"8000 SDG", img_label:"Hot Dog Jumbo", sig:95},
+      {ar:"كرسبي", en:"Crispy", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Crispy Sandwich", sig:96},
+      {ar:"شاورما", en:"Shawarma", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Shawarma", sig:97},
+      {ar:"اقاشي عادي", en:"Agashi Regular", price_ar:"5000 ج", price_en:"5000 SDG", img_label:"Agashi Sandwich", sig:98},
+      {ar:"اقاشي جامبو", en:"Agashi Jumbo", price_ar:"10000 ج", price_en:"10000 SDG", img_label:"Agashi Jumbo", sig:99},
+      {ar:"طعمية", en:"Falafel", price_ar:"1500 ج", price_en:"1500 SDG", img_label:"Falafel", sig:100},
+      {ar:"شيبس", en:"Chips", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Chips Sandwich", sig:101},
+      {ar:"طعمية شيبس", en:"Falafel & Chips", price_ar:"3000 ج", price_en:"3000 SDG", img_label:"Falafel & Chips", sig:102}
     ]
   },
 
   /* ====== بيتزا ====== */
   { key:"pizza", title_ar:"بيتزا", title_en:"Pizza",
     items:[
-      {ar:"بيتزا هوت دوغ صغيرة", en:"Hot Dog Pizza (Small)", price_ar:"14,000 ج", price_en:"14,000 SDG", img_label:"Hot Dog Pizza", sig:120},
-      {ar:"بيتزا هوت دوغ وسط", en:"Hot Dog Pizza (Medium)", price_ar:"19,000 ج", price_en:"19,000 SDG", img_label:"Hot Dog Pizza", sig:121},
-      {ar:"بيتزا هوت دوغ كبيرة", en:"Hot Dog Pizza (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Hot Dog Pizza", sig:122},
-      {ar:"بيتزا هوت دوغ عائلية", en:"Hot Dog Pizza (Family)", price_ar:"27,000 ج", price_en:"27,000 SDG", img_label:"Hot Dog Pizza", sig:123},
+      {ar:"بيتزا هوت دوغ صغيرة", en:"Hot Dog Pizza (Small)", price_ar:"16000 ج", price_en:"16000 SDG", img_label:"Hot Dog Pizza", sig:120},
+      {ar:"بيتزا هوت دوغ وسط", en:"Hot Dog Pizza (Medium)", price_ar:"22000 ج", price_en:"22000 SDG", img_label:"Hot Dog Pizza", sig:121},
+      {ar:"بيتزا هوت دوغ كبيرة", en:"Hot Dog Pizza (Large)", price_ar:"25000 ج", price_en:"25000 SDG", img_label:"Hot Dog Pizza", sig:122},
+      {ar:"بيتزا هوت دوغ عائلية", en:"Hot Dog Pizza (Family)", price_ar:"30000 ج", price_en:"30000 SDG", img_label:"Hot Dog Pizza", sig:123},
 
-      {ar:"بيتزا فراخ صغيرة", en:"Chicken Pizza (Small)", price_ar:"14,000 ج", price_en:"14,000 SDG", img_label:"Chicken Pizza", sig:124},
-      {ar:"بيتزا فراخ وسط", en:"Chicken Pizza (Medium)", price_ar:"19,000 ج", price_en:"19,000 SDG", img_label:"Chicken Pizza", sig:125},
-      {ar:"بيتزا فراخ كبيرة", en:"Chicken Pizza (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Chicken Pizza", sig:126},
-      {ar:"بيتزا فراخ عائلية", en:"Chicken Pizza (Family)", price_ar:"27,000 ج", price_en:"27,000 SDG", img_label:"Chicken Pizza", sig:127},
+      {ar:"بيتزا فراخ صغيرة", en:"Chicken Pizza (Small)", price_ar:"16000 ج", price_en:"16000 SDG", img_label:"Chicken Pizza", sig:124},
+      {ar:"بيتزا فراخ وسط", en:"Chicken Pizza (Medium)", price_ar:"22000 ج", price_en:"22000 SDG", img_label:"Chicken Pizza", sig:125},
+      {ar:"بيتزا فراخ كبيرة", en:"Chicken Pizza (Large)", price_ar:"25000 ج", price_en:"25000 SDG", img_label:"Chicken Pizza", sig:126},
+      {ar:"بيتزا فراخ عائلية", en:"Chicken Pizza (Family)", price_ar:"30000 ج", price_en:"30000 SDG", img_label:"Chicken Pizza", sig:127},
 
-      {ar:"بيتزا خضار صغيرة", en:"Veggie Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Veggie Pizza", sig:128},
-      {ar:"بيتزا خضار وسط", en:"Veggie Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Veggie Pizza", sig:129},
-      {ar:"بيتزا خضار كبيرة", en:"Veggie Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img_label:"Veggie Pizza", sig:130},
-      {ar:"بيتزا خضار عائلية", en:"Veggie Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img_label:"Veggie Pizza", sig:131},
+      {ar:"بيتزا خضار صغيرة", en:"Veggie Pizza (Small)", price_ar:"14000 ج", price_en:"14000 SDG", img_label:"Veggie Pizza", sig:128},
+      {ar:"بيتزا خضار وسط", en:"Veggie Pizza (Medium)", price_ar:"20000 ج", price_en:"20000 SDG", img_label:"Veggie Pizza", sig:129},
+      {ar:"بيتزا خضار كبيرة", en:"Veggie Pizza (Large)", price_ar:"23000 ج", price_en:"23000 SDG", img_label:"Veggie Pizza", sig:130},
+      {ar:"بيتزا خضار عائلية", en:"Veggie Pizza (Family)", price_ar:"28000 ج", price_en:"28000 SDG", img_label:"Veggie Pizza", sig:131},
 
-      {ar:"بيتزا جبنة صغيرة", en:"Cheese Pizza (Small)", price_ar:"12,000 ج", price_en:"12,000 SDG", img_label:"Cheese Pizza", sig:132},
-      {ar:"بيتزا جبنة وسط", en:"Cheese Pizza (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Cheese Pizza", sig:133},
-      {ar:"بيتزا جبنة كبيرة", en:"Cheese Pizza (Large)", price_ar:"20,000 ج", price_en:"20,000 SDG", img_label:"Cheese Pizza", sig:134},
-      {ar:"بيتزا جبنة عائلية", en:"Cheese Pizza (Family)", price_ar:"25,000 ج", price_en:"25,000 SDG", img_label:"Cheese Pizza", sig:135},
-
-      /* موجود بالاسم فقط بدون سعر */
-      {ar:"بيتزا اللحمة", en:"Meat Pizza", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Meat Pizza", sig:136},
-
-      {ar:"بيتزا مشكل صغيرة", en:"Mixed Pizza (Small)", price_ar:"16,000 ج", price_en:"16,000 SDG", img_label:"Mixed Pizza", sig:137},
-      {ar:"بيتزا مشكل وسط", en:"Mixed Pizza (Medium)", price_ar:"21,000 ج", price_en:"21,000 SDG", img_label:"Mixed Pizza", sig:138},
-      {ar:"بيتزا مشكل كبيرة", en:"Mixed Pizza (Large)", price_ar:"24,000 ج", price_en:"24,000 SDG", img_label:"Mixed Pizza", sig:139},
-      {ar:"بيتزا مشكل عائلية", en:"Mixed Pizza (Family)", price_ar:"29,000 ج", price_en:"29,000 SDG", img_label:"Mixed Pizza", sig:140},
-
-      /* أطراف: لم يظهر سعر بالصورة => غير متوفر */
-      {ar:"بيتزا أطراف", en:"Stuffed Crust Pizza", price_ar:UNAV_AR, price_en:UNAV_EN, img_label:"Stuffed Crust Pizza", sig:141}
+      {ar:"بيتزا جبنة صغيرة", en:"Cheese Pizza (Small)", price_ar:"14000 ج", price_en:"14000 SDG", img_label:"Cheese Pizza", sig:132},
+      {ar:"بيتزا جبنة وسط", en:"Cheese Pizza (Medium)", price_ar:"20000 ج", price_en:"20000 SDG", img_label:"Cheese Pizza", sig:133},
+      {ar:"بيتزا جبنة كبيرة", en:"Cheese Pizza (Large)", price_ar:"23000 ج", price_en:"23000 SDG", img_label:"Cheese Pizza", sig:134},
+      {ar:"بيتزا جبنة عائلية", en:"Cheese Pizza (Family)", price_ar:"28000 ج", price_en:"28000 SDG", img_label:"Cheese Pizza", sig:135},{ar:"بيتزا مشكل صغيرة", en:"Mixed Pizza (Small)", price_ar:"18000 ج", price_en:"18000 SDG", img_label:"Mixed Pizza", sig:137},
+      {ar:"بيتزا مشكل وسط", en:"Mixed Pizza (Medium)", price_ar:"24000 ج", price_en:"24000 SDG", img_label:"Mixed Pizza", sig:138},
+      {ar:"بيتزا مشكل كبيرة", en:"Mixed Pizza (Large)", price_ar:"27000 ج", price_en:"27000 SDG", img_label:"Mixed Pizza", sig:139},
+      {ar:"بيتزا مشكل عائلية", en:"Mixed Pizza (Family)", price_ar:"32000 ج", price_en:"32000 SDG", img_label:"Mixed Pizza", sig:140}
     ]
   },
 
   /* ====== فطائر ====== */
   { key:"pastries", title_ar:"الفطائر", title_en:"Pastries",
     items:[
-      {ar:"فطائر مصرية حلوه وسط", en:"Egyptian Sweet Pastry (Medium)", price_ar:"18,000 ج", price_en:"18,000 SDG", img_label:"Sweet Pastry", sig:160},
-      {ar:"فطائر مصرية حلوه كبيرة", en:"Egyptian Sweet Pastry (Large)", price_ar:"22,000 ج", price_en:"22,000 SDG", img_label:"Sweet Pastry", sig:161},
-
-      {ar:"فطائر مصرية مالحة وسط", en:"Egyptian Savory Pastry (Medium)", price_ar:"17,000 ج", price_en:"17,000 SDG", img_label:"Savory Pastry", sig:162},
-      {ar:"فطائر مصرية مالحة كبيرة", en:"Egyptian Savory Pastry (Large)", price_ar:"21,000 ج", price_en:"21,000 SDG", img_label:"Savory Pastry", sig:163},
-
-      {ar:"كلزوني", en:"Calzone", price_ar:"10,000 ج", price_en:"10,000 SDG", img_label:"Calzone", sig:164},
-      {ar:"فطائر شامية", en:"Shami Pastry", price_ar:"7000 ج", price_en:"7000 SDG", img_label:"Shami Pastry", sig:165}
+      {ar:"كلزوني (وسط / كبيرة)", en:"Calzone (Medium / Large)", price_ar:"12000 ج", price_en:"12000 SDG", img_label:"Calzone", sig:164},
+      {ar:"فطائر شامية (وسط / كبيرة)", en:"Shami Pastry (Med / Large)", price_ar:"9000 ج", price_en:"9000 SDG", img_label:"Shami Pastry", sig:165},
+      {ar:"فطيرة سماحة", en:"Samaha Pastry", price_ar:"15000 ج", price_en:"15000 SDG", img_label:"Pastry", sig:166}
     ]
   }
 ];
